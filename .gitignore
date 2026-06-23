@@ -1,1 +1,13 @@
-airflow_venv
+# PostgreSQL data
+pgdata/
+
+# Airflow local files
+airflow/logs/
+__pycache__/
+*.pyc
+
+# Python virtual env
+airflow_venv/
+
+# Docker / local artifacts
+.env

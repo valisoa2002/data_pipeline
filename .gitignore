@@ -11,3 +11,6 @@ airflow_venv/
 
 # Docker / local artifacts
 .env
+
+data/excel_drop/archive/*
+data/excel_drop/*.xlsx

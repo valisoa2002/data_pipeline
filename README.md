@@ -99,6 +99,11 @@ Au premier démarrage, Airflow génère automatiquement un mot de passe pour l'u
 ```bash
 docker logs data_pipeline-airflow-1 2>&1 | grep -i "password"
 ```
+ou pour trouver bien le login
+
+```bash
+docker logs data_pipeline-airflow-1 2>&1 | grep -i "password\|admin\|login"
+```
 
 Exemple de sortie :
 ```
@@ -210,6 +215,22 @@ MSYS_NO_PATHCONV=1 docker exec -it data_pipeline-airflow-1 cat /opt/airflow/logs
 
 ```bash
 docker exec -it data_pipeline-airflow-1 airflow dags reserialize
+```
+
+### Déclenchement manuelle des DAGs
+
+```bash
+docker exec data_pipeline-airflow-1 airflow dags trigger <dag_function_name> (dag_excel_ingestion,...)
+```
+
+### Exemple d'éxecution des requêtes
+# Si vous utilisez docker-compose
+```bash
+docker-compose exec postgres psql -U airflow -d airflow
+```
+# Ou si vous avez juste un conteneur PostgreSQL
+```bash
+docker exec -it <nom_container_postgres> psql -U airflow -d airflow
 ```
 
 ---

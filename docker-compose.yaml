@@ -25,10 +25,16 @@ services:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      _PIP_ADDITIONAL_REQUIREMENTS: >-
+        openpyxl==3.1.5
+        pandas==2.2.3
+        sqlalchemy==2.0.36
+        psycopg2-binary==2.9.10
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/logs:/opt/airflow/logs
       - ./airflow/plugins:/opt/airflow/plugins
+      - ./data:/opt/airflow/data
     ports:
       - "8080:8080"
     command: standalone

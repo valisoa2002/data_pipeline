@@ -10,58 +10,25 @@ services:
       - ./pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
 
-  airflow-init:
+  airflow:
     image: apache/airflow:3.2.2
-    container_name: data_pipeline-airflow-init-1
+    container_name: data_pipeline-airflow-1
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
-      AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
-    volumes:
-      - ./airflow/dags:/opt/airflow/dags
-      - ./airflow/logs:/opt/airflow/logs
-      - ./airflow/plugins:/opt/airflow/plugins
-    entrypoint: /bin/bash
-    command: >
-      -c "
-      airflow db migrate
-      "
-
-  airflow-api-server:
-    image: apache/airflow:3.2.2
-    container_name: data_pipeline-airflow-api-server-1
-    depends_on:
-      - postgres
-      - airflow-init
-    environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
-      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
-      AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_ALL_ADMINS: "True"
-      
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/logs:/opt/airflow/logs
       - ./airflow/plugins:/opt/airflow/plugins
     ports:
       - "8080:8080"
-    command: ["airflow", "api-server", "--port", "8080"]
-
-  airflow-scheduler:
-    image: apache/airflow:3.2.2
-    container_name: data_pipeline-airflow-scheduler-1
-    depends_on:
-      - postgres
-      - airflow-init
-    environment:
-      AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
-      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
-    volumes:
-      - ./airflow/dags:/opt/airflow/dags
-      - ./airflow/logs:/opt/airflow/logs
-      - ./airflow/plugins:/opt/airflow/plugins
-    command: ["airflow", "scheduler"]
+    command: standalone

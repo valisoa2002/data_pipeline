@@ -6,6 +6,7 @@ services:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
+      POSTGRES_HOST_AUTH_METHOD: md5
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     ports:
@@ -38,3 +39,14 @@ services:
     ports:
       - "8080:8080"
     command: standalone
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: data_pipeline-pgadmin-1
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres

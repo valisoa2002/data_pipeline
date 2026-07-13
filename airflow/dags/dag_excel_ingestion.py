@@ -24,6 +24,7 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 
 from airflow.sdk import dag, task
+from airflow.providers.standard.operators.trigger_dagrun import TriggerDagRunOperator
 from airflow.models import Variable
 
 logger = logging.getLogger(__name__)
@@ -307,7 +308,6 @@ def excel_ingestion_dag():
                 report["sheets"][sheet_name] = "skipped (duplicate)"
                 continue
 
-            
             # --- Nettoyage générique ---
             # Normalisation des noms de colonnes
             df.columns = (
@@ -327,34 +327,33 @@ def excel_ingestion_dag():
             # Suppression des lignes entièrement vides
             df = df.dropna(how="all")
 
-            # RENOMMAGE EXPLICITE DES COLONNES POUR LA TABLE CADENCES
-            # Ce renommage doit être fait AVANT l'insertion
-            if sheet_name == "Détails Cadences":
-                # Colonnes attendues dans la table : duree_totale_min, duree_arrets_min, etc.
-                col_renames_cadences = {
-                    "duree_totale__min": "duree_totale_min",
-                    "duree_arrets__min": "duree_arrets_min", 
-                    "temps_net__min": "temps_net_min",
-                    "cadence_reelle__pcs_min": "cadence_reelle",
-                    "cadence_theorique__pcs_min": "cadence_theorique",
-                    "ecart": "ecart_pct",
-                    "disponibilite": "disponibilite_pct",
-                    "performance": "performance_pct",
-                    "qualite": "qualite_pct",
-                    "trs": "trs_pct",
-                    "type": "type_arret",
-                }
-                # Appliquer le renommage
-                df.rename(columns=col_renames_cadences, inplace=True)
-                logger.info("Colonnes après renommage spécifique cadences : %s", list(df.columns))
-            else:
-                # Renommage générique pour les autres feuilles
-                col_renames_generic = {
-                    "duree__min": "duree_min",
-                    "type": "type_arret",
-                }
-                df.rename(columns={k: v for k, v in col_renames_generic.items() if k in df.columns}, inplace=True)
-                logger.info("Colonnes après renommage générique : %s", list(df.columns))
+            # Renommage explicite des colonnes ambiguës ou mal normalisées
+            # Problème : "Durée (min)" → normalisation générique → "duree__min" (double __)
+            # Problème : "Type" → mot réservé PostgreSQL → renommer en "type_arret"
+            col_renames = {
+                # Feuille Arrêts
+                "duree__min":                    "duree_min",
+                "type":                          "type_arret",
+                # Feuille Cadences — patterns réels observés en production
+                "duree_totale__min":             "duree_totale_min",
+                "duree_totale__min_":            "duree_totale_min",
+                "duree_arrets__min":             "duree_arrets_min",
+                "duree_arrets__min_":            "duree_arrets_min",
+                "temps_net__min":                "temps_net_min",
+                "temps_net__min_":               "temps_net_min",
+                "cadence_reelle__pcs_min":       "cadence_reelle",
+                "cadence_reelle__pcs_min_":      "cadence_reelle",
+                "cadence_theorique__pcs_min":    "cadence_theorique",
+                "cadence_theorique__pcs_min_":   "cadence_theorique",
+                "ecart___":                      "ecart_pct",
+                "ecart":                         "ecart_pct",
+                "disponibilite":                 "disponibilite_pct",
+                "performance":                   "performance_pct",
+                "qualite":                       "qualite_pct",
+                "trs":                           "trs_pct",
+            }
+            df.rename(columns={k: v for k, v in col_renames.items() if k in df.columns}, inplace=True)
+            logger.info("Colonnes après renommage : %s", list(df.columns))
 
             # Parsing des colonnes datetime
             for col_original in DATETIME_COLS.get(sheet_name, []):
@@ -455,22 +454,48 @@ def excel_ingestion_dag():
         logger.info("=" * 60)
 
     # -----------------------------------------------------------------------
+    # TASK — Court-circuit si aucun fichier trouvé
+    # -----------------------------------------------------------------------
+    @task.short_circuit(ignore_downstream_trigger_rules=False)
+    def has_files(file_paths: list[str]) -> bool:
+        """
+        Retourne True si des fichiers sont à traiter, False sinon.
+        En cas de False, les tasks ingest/archive/log_summary sont skippées
+        mais trigger_quality_check s'exécute quand même grâce à
+        ignore_downstream_trigger_rules=False + TriggerRule.ALL_DONE.
+        """
+        if not file_paths:
+            logger.info("Aucun fichier Excel à ingérer — pipeline court-circuité.")
+            logger.info("Le DAG quality sera quand même déclenché sur les données existantes.")
+            return False
+        logger.info("%d fichier(s) à traiter.", len(file_paths))
+        return True
+
+    # -----------------------------------------------------------------------
     # Orchestration du DAG
     # -----------------------------------------------------------------------
+    from airflow.utils.trigger_rule import TriggerRule
+
     schema_ready = ensure_staging_schema()
     files = discover_files()
+    gate = has_files(file_paths=files)
 
-    # Ingestion de chaque fichier (dynamic task mapping)
+    # Ingestion de chaque fichier (dynamic task mapping) — skippée si gate=False
     reports = ingest_excel_file.expand(file_path=files)
-
-    # Archivage après ingestion
     archived = archive_files(file_paths=files)
-
-    # Résumé final
     summary = log_summary(reports=reports)
 
-    # Dépendances explicites
-    schema_ready >> files >> reports >> archived >> summary
+    # Déclenchement quality — toujours exécuté (ALL_DONE = même si upstream skipped)
+    trigger_quality = TriggerDagRunOperator(
+        task_id="trigger_quality_check",
+        trigger_dag_id="dag_excel_quality",
+        wait_for_completion=False,
+        reset_dag_run=True,
+        trigger_rule=TriggerRule.ALL_DONE,
+    )
+
+    # Dépendances
+    schema_ready >> files >> gate >> reports >> archived >> summary >> trigger_quality
 
 
 excel_ingestion_dag()

@@ -23,9 +23,8 @@ from pathlib import Path
 import pandas as pd
 from sqlalchemy import create_engine, text
 
-from airflow.sdk import dag, task
+from airflow.sdk import dag, task, Variable
 from airflow.providers.standard.operators.trigger_dagrun import TriggerDagRunOperator
-from airflow.models import Variable
 
 logger = logging.getLogger(__name__)
 
@@ -34,11 +33,11 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 EXCEL_DROP_FOLDER = Variable.get(
     "excel_drop_folder",
-    default_var="/opt/airflow/data/excel_drop",
+    default="/opt/airflow/data/excel_drop",
 )
 PG_CONN_STR = Variable.get(
     "pg_staging_conn",
-    default_var="postgresql://airflow:airflow@postgres:5432/airflow",
+    default="postgresql://airflow:airflow@postgres:5432/airflow",
 )
 STAGING_SCHEMA = "staging"
 

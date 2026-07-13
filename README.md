@@ -300,3 +300,12 @@ Airflow 3.x avec `LocalExecutor` en configuration multi-containers rencontre des
 - [PostgreSQL 15](https://www.postgresql.org/)
 - [Docker & Docker Compose](https://www.docker.com/)
 - Python 3.13
+
+
+## Connexion dans pgadmin
+Name: DATA WAREHOUSE SOMAPRO
+Host: postgres
+Port: 5432
+Database: airflow
+Username: airflow
+Password: airflow

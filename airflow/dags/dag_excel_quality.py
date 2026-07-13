@@ -18,6 +18,26 @@ Sévérités :
   CRITICAL → quarantaine immédiate
   WARNING  → quarantaine avec log
   INFO     → validated avec flag
+
+---------------------------------------------------------------------------
+CORRECTIFS appliqués (2026-07-13) :
+  1. ROUND(double precision, integer) n'existe pas en PostgreSQL -> cast
+     explicite en NUMERIC sur NULLIF(:total_rules,0) + cast final
+     ::NUMERIC(5,2) sur quality_score.
+  2. ON CONFLICT DO NOTHING était inopérant : les tables validated/*
+     et quarantine/* créées via CREATE TABLE ... AS SELECT ... WHERE FALSE
+     n'avaient aucune contrainte UNIQUE/PRIMARY KEY. Ajout d'une PRIMARY
+     KEY sur _id (idempotent via bloc DO) pour que les retries ne créent
+     pas de doublons.
+  3. MAX(qr.severity) triait alphabétiquement ('WARNING' > 'CRITICAL'
+     car W > C), ce qui remontait la mauvaise sévérité max. Remplacé par
+     un ORDER BY sur un rang de sévérité explicite.
+  4. Les listes d'IDs (quarantine_ids) étaient injectées directement dans
+     le texte SQL via f-string (ARRAY{quarantine_ids}::int[]). Remplacé
+     par des paramètres liés SQLAlchemy (:quarantine_ids) pour éviter les
+     requêtes fragiles/trop longues et suivre la même logique que
+     check_table.
+---------------------------------------------------------------------------
 """
 
 from __future__ import annotations
@@ -38,7 +58,7 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 PG_CONN_STR = Variable.get(
     "pg_staging_conn",
-    default_var="postgresql://airflow:airflow@postgres:5432/airflow",
+    default="postgresql://airflow:airflow@postgres:5432/airflow",
 )
 STAGING_SCHEMA   = "staging"
 QUALITY_SCHEMA   = "quality"
@@ -46,10 +66,10 @@ VALIDATED_SCHEMA = "validated"
 QUARANTINE_SCHEMA = "quarantine"
 
 # Seuils TRS et composantes (ajustables via Airflow Variables)
-TRS_MIN_WARNING  = float(Variable.get("trs_min_warning",  default_var="80"))
-TRS_MAX_INFO     = float(Variable.get("trs_max_info",     default_var="100"))
-TRS_MAX_CRITICAL = float(Variable.get("trs_max_critical", default_var="120"))
-QUALITE_MIN_WARNING = float(Variable.get("qualite_min_warning", default_var="95"))
+TRS_MIN_WARNING  = float(Variable.get("trs_min_warning",  default="80"))
+TRS_MAX_INFO     = float(Variable.get("trs_max_info",     default="100"))
+TRS_MAX_CRITICAL = float(Variable.get("trs_max_critical", default="120"))
+QUALITE_MIN_WARNING = float(Variable.get("qualite_min_warning", default="95"))
 
 # ---------------------------------------------------------------------------
 # Règles de qualité par table
@@ -166,6 +186,12 @@ QUALITY_RULES = {
 
 # Colonnes à exclure lors de la copie vers validated/quarantine
 META_COLS = {"_id", "_ingested_at"}
+
+# Rang numérique des sévérités (1 = le plus sévère) — utilisé pour calculer
+# correctement severity_max, car MAX() sur du texte trie alphabétiquement
+# et donnerait 'WARNING' (W) avant 'CRITICAL' (C), ce qui est faux.
+SEVERITY_RANK_SQL = "CASE severity WHEN 'CRITICAL' THEN 1 WHEN 'WARNING' THEN 2 ELSE 3 END"
+SEVERITY_RANK_SQL_QR = "CASE qr.severity WHEN 'CRITICAL' THEN 1 WHEN 'WARNING' THEN 2 ELSE 3 END"
 
 # ---------------------------------------------------------------------------
 # DAG
@@ -391,7 +417,7 @@ def excel_quality_dag():
             conn.execute(text(f"""
                 CREATE TABLE IF NOT EXISTS {VALIDATED_SCHEMA}.{table_name}
                 AS SELECT *, 
-                    NULL::FLOAT     AS quality_score,
+                    NULL::NUMERIC(5,2) AS quality_score,
                     NULL::TEXT      AS quality_flags,
                     NOW()           AS validated_at,
                     ''::TEXT        AS validated_dag_run_id
@@ -409,13 +435,40 @@ def excel_quality_dag():
                 FROM {STAGING_SCHEMA}.{table_name} WHERE FALSE;
             """))
 
-        # --- Insertion dans validated ---
-        valid_filter = (
-            f"_id != ALL(ARRAY{quarantine_ids}::int[])"
-            if quarantine_ids else "TRUE"
-        )
+            # FIX #2 — ON CONFLICT DO NOTHING était inopérant : ces tables
+            # n'avaient aucune contrainte UNIQUE/PRIMARY KEY sur _id.
+            # Ajout idempotent d'une PRIMARY KEY (_id) via bloc DO, pour que
+            # les retries n'insèrent pas de doublons.
+            conn.execute(text(f"""
+                DO $$
+                BEGIN
+                    IF NOT EXISTS (
+                        SELECT 1 FROM pg_constraint
+                        WHERE conrelid = '{VALIDATED_SCHEMA}.{table_name}'::regclass
+                          AND contype = 'p'
+                    ) THEN
+                        ALTER TABLE {VALIDATED_SCHEMA}.{table_name}
+                            ADD PRIMARY KEY (_id);
+                    END IF;
+                END $$;
+            """))
+            conn.execute(text(f"""
+                DO $$
+                BEGIN
+                    IF NOT EXISTS (
+                        SELECT 1 FROM pg_constraint
+                        WHERE conrelid = '{QUARANTINE_SCHEMA}.{table_name}'::regclass
+                          AND contype = 'p'
+                    ) THEN
+                        ALTER TABLE {QUARANTINE_SCHEMA}.{table_name}
+                            ADD PRIMARY KEY (_id);
+                    END IF;
+                END $$;
+            """))
 
-        # Calcul du quality_score par ligne (ratio règles passées / total règles)
+        # --- Insertion dans validated ---
+        # FIX #4 — quarantine_ids est désormais passé comme paramètre lié
+        # (:quarantine_ids) plutôt qu'injecté dans le texte SQL via f-string.
         total_rules = len(QUALITY_RULES.get(table_name, []))
 
         with engine.begin() as conn:
@@ -423,10 +476,18 @@ def excel_quality_dag():
             rows_inserted = conn.execute(text(f"""
                 INSERT INTO {VALIDATED_SCHEMA}.{table_name}
                 SELECT s.*,
-                    ROUND(
-                        (1.0 - COALESCE(v.violations, 0)::FLOAT / NULLIF(:total_rules, 0)) * 100,
+                        ROUND(
+                        (
+                        1.0::NUMERIC
+                        -
+                        COALESCE(v.violations,0)::NUMERIC
+                        /
+                        NULLIF(:total_rules,0)::NUMERIC
+                        )
+                        *
+                        100,
                         2
-                    )                                   AS quality_score,
+                        )::NUMERIC(5,2)                AS quality_score,
                     COALESCE(v.flags, 'VALID')          AS quality_flags,
                     NOW()                               AS validated_at,
                     :run_id                             AS validated_dag_run_id
@@ -441,23 +502,32 @@ def excel_quality_dag():
                       AND severity = 'INFO'
                     GROUP BY source_row_id
                 ) v ON v.source_row_id = s._id
-                WHERE {valid_filter}
+                WHERE NOT (s._id = ANY(:quarantine_ids))
                 ON CONFLICT DO NOTHING
             """), {"run_id": dag_run_id, "tbl": table_name,
-                   "total_rules": total_rules})
+                   "total_rules": total_rules,
+                   "quarantine_ids": quarantine_ids})
             valid_count = rows_inserted.rowcount
 
         # --- Insertion dans quarantine ---
         quarantine_count = 0
         if quarantine_ids:
+            staging_columns = _get_columns(engine, STAGING_SCHEMA, table_name)
+            group_by_cols = ", ".join(f"s.{c}" for c in staging_columns)
+
             with engine.begin() as conn:
                 rows_qrt = conn.execute(text(f"""
                     INSERT INTO {QUARANTINE_SCHEMA}.{table_name}
                     SELECT s.*,
                         ARRAY_AGG(DISTINCT qr.rule_code)  AS failed_rules,
-                        MAX(qr.severity)                  AS severity_max,
+                        -- FIX #3 : MAX(text) trie alphabétiquement et
+                        -- donnait 'WARNING' avant 'CRITICAL'. On sélectionne
+                        -- désormais la sévérité la plus grave via un rang
+                        -- explicite (1=CRITICAL, 2=WARNING, 3=INFO).
+                        (ARRAY_AGG(qr.severity ORDER BY {SEVERITY_RANK_SQL_QR} ASC))[1]
+                                                           AS severity_max,
                         NOW()                             AS quarantined_at,
-                        :run_id                           AS quarantine_dag_run_id
+                        :run_id                            AS quarantine_dag_run_id
                     FROM {STAGING_SCHEMA}.{table_name} s
                     JOIN {QUALITY_SCHEMA}.check_results qr
                         ON qr.source_row_id = s._id
@@ -465,10 +535,11 @@ def excel_quality_dag():
                        AND qr.source_table  = :tbl
                        AND qr.is_violated   = TRUE
                        AND qr.severity IN ('CRITICAL', 'WARNING')
-                    WHERE s._id = ANY(ARRAY{quarantine_ids}::int[])
-                    GROUP BY {', '.join([f's.{c}' for c in _get_columns(engine, STAGING_SCHEMA, table_name)])}
+                    WHERE s._id = ANY(:quarantine_ids)
+                    GROUP BY {group_by_cols}
                     ON CONFLICT DO NOTHING
-                """), {"run_id": dag_run_id, "tbl": table_name})
+                """), {"run_id": dag_run_id, "tbl": table_name,
+                       "quarantine_ids": quarantine_ids})
                 quarantine_count = rows_qrt.rowcount
 
         logger.info("Route %s — validated: %d | quarantine: %d",
@@ -555,7 +626,6 @@ def excel_quality_dag():
             logger.warning("📊 ANOMALIES TRS détectées (%d):", len(trs_anomalies))
             for row_id, code, desc in trs_anomalies:
                 logger.warning("   Ligne %d — [%s] %s", row_id, code, desc)
-
 
     # -----------------------------------------------------------------------
     # Fonction utilitaire (hors task)

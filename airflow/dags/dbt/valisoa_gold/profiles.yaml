@@ -1,0 +1,13 @@
+valisoa_gold:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('DBT_PG_HOST', 'postgres') }}"
+      user: "{{ env_var('DBT_PG_USER', 'airflow') }}"
+      password: "{{ env_var('DBT_PG_PASSWORD', 'airflow') }}"
+      port: "{{ env_var('DBT_PG_PORT', '5432') | as_number }}"
+      dbname: "{{ env_var('DBT_PG_DBNAME', 'airflow') }}"
+      schema: gold
+      threads: 4
+      keepalives_idle: 0

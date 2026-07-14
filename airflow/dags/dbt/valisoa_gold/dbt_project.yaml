@@ -1,0 +1,40 @@
+name: 'valisoa_gold'
+version: '1.0.0'
+config-version: 2
+
+profile: 'valisoa_gold'
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:
+  # Seuils métier — alignés sur les Airflow Variables du DAG qualité
+  # (garder cohérent avec trs_min_warning / trs_max_critical dans dag_excel_quality.py)
+  trs_min_warning: 80
+  trs_max_critical: 120
+
+models:
+  valisoa_gold:
+    staging:
+      +materialized: view
+      +schema: gold_staging
+    intermediate:
+      +materialized: view
+      +schema: gold_intermediate
+    marts:
+      dimensions:
+        +materialized: table
+        +schema: gold
+      facts:
+        +materialized: incremental
+        +incremental_strategy: delete+insert
+        +schema: gold
+      ml_features:
+        +materialized: table
+        +schema: gold_ml

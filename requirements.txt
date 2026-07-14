@@ -2,3 +2,5 @@ apache-airflow==3.2.2
 pandas
 sqlalchemy
 openpyxl
+dbt-postgres==1.8.*
+astronomer-cosmos==1.6.*

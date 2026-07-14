@@ -1,0 +1,8 @@
+select
+    _id                         as source_id,
+    trim(code_of)                as code_of,
+    trim(motif)                  as motif,
+    trim(composant_cible)        as composant_cible,
+    quantite,
+    validated_at                 as date_saisie
+from {{ source('validated', 'raw_excel_rebuts') }}

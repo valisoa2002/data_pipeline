@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: validated
+    schema: validated
+    description: "Couche Silver — données validées par le DAG de qualité (dag_excel_quality)"
+    tables:
+      - name: raw_excel_realisations
+        columns:
+          - name: _id
+            tests: [unique, not_null]
+          - name: code_of
+            tests: [not_null]
+      - name: raw_excel_arrets
+      - name: raw_excel_rebuts
+      - name: raw_excel_cadences
+      - name: raw_excel_progressions
+      - name: raw_excel_changements

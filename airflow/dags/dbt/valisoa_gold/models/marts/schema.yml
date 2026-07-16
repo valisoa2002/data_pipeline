@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: dim_machine
+    columns:
+      - name: machine_key
+        tests: [unique, not_null]
+
+  - name: dim_produit
+    columns:
+      - name: produit_key
+        tests: [unique, not_null]
+
+  - name: dim_temps
+    columns:
+      - name: temps_key
+        tests: [unique, not_null]
+
+  - name: dim_motif_arret
+    columns:
+      - name: motif_key
+        tests: [unique, not_null]
+
+  - name: fact_production
+    columns:
+      - name: production_key
+        tests: [unique, not_null]
+      - name: code_of
+        tests: [not_null]
+
+  - name: fact_arrets
+    columns:
+      - name: arret_key
+        tests: [unique, not_null]
+
+  - name: fact_rebuts
+    columns:
+      - name: rebut_key
+        tests: [unique, not_null]

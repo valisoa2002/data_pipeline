@@ -309,3 +309,12 @@ Port: 5432
 Database: airflow
 Username: airflow
 Password: airflow
+
+
+## Configuration des variables de DBT
+export DBT_PG_HOST=127.0.0.1
+export DBT_PG_USER=airflow
+export DBT_PG_PASSWORD=airflow
+export DBT_PG_PORT=5434
+export DBT_PG_DBNAME=airflow
+export DBT_PROFILES_DIR=$(pwd)

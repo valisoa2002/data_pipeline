@@ -32,7 +32,7 @@ with realisations_ranked as (
             partition by trim(code_of)
             order by date_fin desc nulls last, qte_produite desc, _id desc
         ) as rn
-    from {{ source('validated', 'raw_excel_realisations') }}
+    from "airflow"."validated"."raw_excel_realisations"
     where code_of is not null and trim(code_of) != ''
 )
 

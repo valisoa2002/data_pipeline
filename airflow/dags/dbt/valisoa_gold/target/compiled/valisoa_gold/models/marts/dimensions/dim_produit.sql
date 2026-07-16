@@ -7,7 +7,7 @@
 
 with produits_raw as (
     select distinct produit
-    from {{ ref('stg_realisations') }}
+    from "airflow"."gold_gold_staging"."stg_realisations"
     where produit is not null and trim(produit) != ''
 ),
 
@@ -20,7 +20,12 @@ produits_parsed as (
 )
 
 select
-    {{ surrogate_key(['code']) }}   as produit_key,
+    
+    md5(
+        
+            coalesce(cast(code as text), '')
+    )
+   as produit_key,
     code,
     libelle,
     cast(null as text) as famille,

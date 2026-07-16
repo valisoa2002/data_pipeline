@@ -1,4 +1,9 @@
--- Combine une ligne de réalisation avec ses indicateurs TRS correspondants
+
+  create view "airflow"."gold_gold_intermediate"."int_production_cadence__dbt_tmp"
+    
+    
+  as (
+    -- Combine une ligne de réalisation avec ses indicateurs TRS correspondants
 -- (grain : un OF). Si plusieurs lignes de cadence existent pour un même
 -- OF (relevés successifs), on prend la plus récente (validated_at max).
 --
@@ -13,7 +18,7 @@ with cadence_ranked as (
             partition by code_of
             order by validated_at desc
         ) as rn
-    from {{ ref('stg_cadences') }}
+    from "airflow"."gold_gold_staging"."stg_cadences"
 ),
 
 cadence_latest as (
@@ -35,6 +40,7 @@ select
     c.disponibilite_pct,
     c.performance_pct,
     c.qualite_pct
-from {{ ref('stg_realisations') }} r
+from "airflow"."gold_gold_staging"."stg_realisations" r
 left join cadence_latest c
     on c.code_of = r.code_of
+  );

@@ -13,7 +13,7 @@ with cadence_ranked as (
             partition by code_of
             order by validated_at desc
         ) as rn
-    from {{ ref('stg_cadences') }}
+    from "airflow"."gold_gold_staging"."stg_cadences"
 ),
 
 cadence_latest as (
@@ -35,6 +35,6 @@ select
     c.disponibilite_pct,
     c.performance_pct,
     c.qualite_pct
-from {{ ref('stg_realisations') }} r
+from "airflow"."gold_gold_staging"."stg_realisations" r
 left join cadence_latest c
     on c.code_of = r.code_of

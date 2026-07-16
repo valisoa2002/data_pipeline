@@ -50,6 +50,7 @@ from sqlalchemy import create_engine, text
 
 from airflow.sdk import dag, task
 from airflow.sdk import Variable
+from airflow.providers.standard.operators.trigger_dagrun import TriggerDagRunOperator
 
 logger = logging.getLogger(__name__)
 
@@ -660,10 +661,19 @@ def excel_quality_dag():
 
     summary = quality_report_summary(route_results=route_results)
 
+    # Déclenchement du DAG 3 (transformation Gold via dbt) — non bloquant :
+    # DAG 2 ne reste pas en attente de la fin de dag_dbt_transform.
+    trigger_gold_refresh = TriggerDagRunOperator(
+        task_id="trigger_dbt_transform",
+        trigger_dag_id="dag_dbt_transform",
+        wait_for_completion=False,
+        reset_dag_run=True,
+    )
+
     schemas_ready >> check_results
     for cr, rr in zip(check_results, route_results):
         cr >> rr
-    route_results >> summary
+    route_results >> summary >> trigger_gold_refresh
 
 
 excel_quality_dag()

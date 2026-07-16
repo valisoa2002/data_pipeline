@@ -27,10 +27,15 @@ services:
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       _PIP_ADDITIONAL_REQUIREMENTS: >-
-        openpyxl==3.1.5
-        pandas==2.2.3
-        sqlalchemy==2.0.36
-        psycopg2-binary==2.9.10
+          openpyxl==3.1.5
+          pandas==2.3.2
+          sqlalchemy>=2.0.48
+          psycopg2-binary==2.9.12
+          apache-airflow==3.2.2
+          dbt-core>=1.9,<1.11
+          dbt-postgres>=1.9,<1.11
+          astronomer-cosmos>=1.11,<2.0
+      # AIRFLOW__CORE__LAZY_LOAD_PLUGINS: "True"
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/logs:/opt/airflow/logs

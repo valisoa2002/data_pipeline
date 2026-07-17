@@ -1,5 +1,5 @@
 
-  create view "airflow"."gold_gold_staging"."stg_cadences__dbt_tmp"
+  create view "airflow"."gold_staging"."stg_cadences__dbt_tmp"
     
     
   as (

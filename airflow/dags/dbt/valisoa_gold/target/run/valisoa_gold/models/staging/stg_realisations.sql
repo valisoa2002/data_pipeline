@@ -1,5 +1,5 @@
 
-  create view "airflow"."gold_gold_staging"."stg_realisations__dbt_tmp"
+  create view "airflow"."gold_staging"."stg_realisations__dbt_tmp"
     
     
   as (
@@ -31,6 +31,7 @@ with realisations_ranked as (
         qte_prevue,
         qte_produite,
         qte_rebut,
+        statut,
         quality_score,
         validated_at,
         row_number() over (
@@ -52,6 +53,7 @@ select
     qte_prevue,
     qte_produite,
     qte_rebut,
+    trim(statut)                  as statut,
     quality_score,
     validated_at
 from realisations_ranked

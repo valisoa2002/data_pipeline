@@ -2,7 +2,7 @@
   
     
 
-  create  table "airflow"."gold_gold"."dim_produit__dbt_tmp"
+  create  table "airflow"."gold"."dim_produit__dbt_tmp"
   
   
     as
@@ -17,7 +17,7 @@
 
 with produits_raw as (
     select distinct produit
-    from "airflow"."gold_gold_staging"."stg_realisations"
+    from "airflow"."gold_staging"."stg_realisations"
     where produit is not null and trim(produit) != ''
 ),
 

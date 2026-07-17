@@ -7,9 +7,9 @@ with bounds as (
         min(date_debut) as min_date,
         max(coalesce(date_fin, date_debut)) as max_date
     from (
-        select date_debut, date_fin from "airflow"."gold_gold_staging"."stg_realisations"
+        select date_debut, date_fin from "airflow"."gold_staging"."stg_realisations"
         union all
-        select date_debut, date_fin from "airflow"."gold_gold_staging"."stg_arrets"
+        select date_debut, date_fin from "airflow"."gold_staging"."stg_arrets"
     ) all_dates
 ),
 

@@ -20,6 +20,7 @@ select
     ipc.qte_prevue,
     ipc.qte_produite,
     ipc.qte_rebut,
+    ipc.statut,
     ipc.trs_pct,
     ipc.disponibilite_pct,
     ipc.performance_pct,

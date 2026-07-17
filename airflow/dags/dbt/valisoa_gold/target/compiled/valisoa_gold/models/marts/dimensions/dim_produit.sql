@@ -7,7 +7,7 @@
 
 with produits_raw as (
     select distinct produit
-    from "airflow"."gold_gold_staging"."stg_realisations"
+    from "airflow"."gold_staging"."stg_realisations"
     where produit is not null and trim(produit) != ''
 ),
 

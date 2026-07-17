@@ -5,7 +5,7 @@
 
 
 select rebut_key
-from "airflow"."gold_gold"."fact_rebuts"
+from "airflow"."gold"."fact_rebuts"
 where rebut_key is null
 
 

@@ -31,6 +31,7 @@ select
     r.qte_prevue,
     r.qte_produite,
     r.qte_rebut,
+    r.statut,
     c.trs_pct,
     c.disponibilite_pct,
     c.performance_pct,

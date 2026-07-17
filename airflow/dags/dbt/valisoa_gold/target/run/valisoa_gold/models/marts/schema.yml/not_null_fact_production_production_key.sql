@@ -13,7 +13,7 @@
 
 
 select production_key
-from "airflow"."gold_gold"."fact_production"
+from "airflow"."gold"."fact_production"
 where production_key is null
 
 

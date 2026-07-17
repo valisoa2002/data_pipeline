@@ -9,7 +9,7 @@ with arrets_agg as (
         count(*)          as nb_arrets,
         sum(duree_min)     as duree_arrets_totale_min,
         sum(case when duree_min > 60 then 1 else 0 end) as nb_arrets_longs
-    from "airflow"."gold_gold_staging"."stg_arrets"
+    from "airflow"."gold_staging"."stg_arrets"
     group by code_of
 ),
 
@@ -18,7 +18,7 @@ rebuts_agg as (
         code_of,
         count(*)      as nb_lignes_rebut,
         sum(quantite)  as qte_rebut_declaree
-    from "airflow"."gold_gold_staging"."stg_rebuts"
+    from "airflow"."gold_staging"."stg_rebuts"
     group by code_of
 )
 
@@ -48,8 +48,8 @@ select
          then round(fp.qte_rebut::numeric / fp.qte_produite * 100, 2)
          else null
     end as taux_rebut_pct
-from "airflow"."gold_gold"."fact_production" fp
-left join "airflow"."gold_gold"."dim_machine" dm  on dm.machine_key = fp.machine_key
-left join "airflow"."gold_gold"."dim_produit" dp  on dp.produit_key = fp.produit_key
+from "airflow"."gold"."fact_production" fp
+left join "airflow"."gold"."dim_machine" dm  on dm.machine_key = fp.machine_key
+left join "airflow"."gold"."dim_produit" dp  on dp.produit_key = fp.produit_key
 left join arrets_agg aa               on aa.code_of = fp.code_of
 left join rebuts_agg ra               on ra.code_of = fp.code_of

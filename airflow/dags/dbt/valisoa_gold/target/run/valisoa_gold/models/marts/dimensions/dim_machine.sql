@@ -2,7 +2,7 @@
   
     
 
-  create  table "airflow"."gold_gold"."dim_machine__dbt_tmp"
+  create  table "airflow"."gold"."dim_machine__dbt_tmp"
   
   
     as
@@ -15,13 +15,13 @@
 
 with machines as (
     select distinct machine, atelier
-    from "airflow"."gold_gold_staging"."stg_realisations"
+    from "airflow"."gold_staging"."stg_realisations"
     where machine is not null and trim(machine) != ''
 
     union
 
     select distinct machine, cast(null as text) as atelier
-    from "airflow"."gold_gold_staging"."stg_arrets"
+    from "airflow"."gold_staging"."stg_arrets"
     where machine is not null and trim(machine) != ''
 ),
 

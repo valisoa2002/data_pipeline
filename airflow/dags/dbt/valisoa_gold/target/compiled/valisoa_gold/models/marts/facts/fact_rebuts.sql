@@ -13,7 +13,7 @@ select
     dt.temps_key,
     sr.quantite,
     sr.date_saisie
-from "airflow"."gold_gold_staging"."stg_rebuts" sr
-left join "airflow"."gold_gold"."dim_temps" dt
+from "airflow"."gold_staging"."stg_rebuts" sr
+left join "airflow"."gold"."dim_temps" dt
     on dt.date = date_trunc('day', sr.date_saisie)::date
 

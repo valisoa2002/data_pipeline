@@ -1,5 +1,5 @@
 
-  create view "airflow"."gold_gold_intermediate"."int_production_cadence__dbt_tmp"
+  create view "airflow"."gold_intermediate"."int_production_cadence__dbt_tmp"
     
     
   as (
@@ -18,7 +18,7 @@ with cadence_ranked as (
             partition by code_of
             order by validated_at desc
         ) as rn
-    from "airflow"."gold_gold_staging"."stg_cadences"
+    from "airflow"."gold_staging"."stg_cadences"
 ),
 
 cadence_latest as (
@@ -36,11 +36,12 @@ select
     r.qte_prevue,
     r.qte_produite,
     r.qte_rebut,
+    r.statut,
     c.trs_pct,
     c.disponibilite_pct,
     c.performance_pct,
     c.qualite_pct
-from "airflow"."gold_gold_staging"."stg_realisations" r
+from "airflow"."gold_staging"."stg_realisations" r
 left join cadence_latest c
     on c.code_of = r.code_of
   );

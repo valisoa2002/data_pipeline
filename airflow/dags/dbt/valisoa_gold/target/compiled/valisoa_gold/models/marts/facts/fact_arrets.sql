@@ -14,12 +14,12 @@ select
     sa.date_debut,
     sa.date_fin,
     sa.duree_min
-from "airflow"."gold_gold_staging"."stg_arrets" sa
-left join "airflow"."gold_gold"."dim_machine" dm
+from "airflow"."gold_staging"."stg_arrets" sa
+left join "airflow"."gold"."dim_machine" dm
     on dm.machine = sa.machine
-left join "airflow"."gold_gold"."dim_motif_arret" dma
+left join "airflow"."gold"."dim_motif_arret" dma
     on dma.type_arret = coalesce(sa.type_arret, 'NON_RENSEIGNE')
    and dma.motif       = coalesce(sa.motif, 'NON_RENSEIGNE')
-left join "airflow"."gold_gold"."dim_temps" dt
+left join "airflow"."gold"."dim_temps" dt
     on dt.date = date_trunc('day', sa.date_debut)::date
 

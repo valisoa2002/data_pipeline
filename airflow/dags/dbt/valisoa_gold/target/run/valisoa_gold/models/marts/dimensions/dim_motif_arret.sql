@@ -2,7 +2,7 @@
   
     
 
-  create  table "airflow"."gold_gold"."dim_motif_arret__dbt_tmp"
+  create  table "airflow"."gold"."dim_motif_arret__dbt_tmp"
   
   
     as
@@ -16,7 +16,7 @@ with motifs as (
     select distinct
         coalesce(type_arret, 'NON_RENSEIGNE') as type_arret,
         coalesce(motif, 'NON_RENSEIGNE')       as motif
-    from "airflow"."gold_gold_staging"."stg_arrets"
+    from "airflow"."gold_staging"."stg_arrets"
 )
 
 select

@@ -6,7 +6,7 @@ select
     motif_key as unique_field,
     count(*) as n_records
 
-from "airflow"."gold_gold"."dim_motif_arret"
+from "airflow"."gold"."dim_motif_arret"
 where motif_key is not null
 group by motif_key
 having count(*) > 1

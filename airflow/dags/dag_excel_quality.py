@@ -138,26 +138,36 @@ QUALITY_RULES = {
 
     "raw_excel_cadences": [
         # Règles TRS — seuils métier VALISOA (80%-120%)
-        ("QC003", "C", "CRITICAL", f"TRS > {TRS_MAX_CRITICAL}% (aberration technique)",
-         f"trs_pct IS NOT NULL AND trs_pct > {TRS_MAX_CRITICAL}"),
+        #
+        # RECLASSIFICATION (2026-07-...) : un TRS/disponibilité/performance/
+        # qualité en dehors de la plage 80-120% n'est PAS une erreur de
+        # donnée — c'est un FAIT RÉEL du terrain (sous-performance suite
+        # à des arrêts/rebuts, ou sur-performance ponctuelle). Router ces
+        # lignes en quarantaine les faisait disparaître du reporting Gold,
+        # alors qu'elles sont exactement ce qu'un dashboard de pilotage
+        # industriel doit montrer. Seules les vraies aberrations physiques
+        # (valeurs négatives, ou dépassements extrêmes impossibles à
+        # expliquer par la réalité terrain) restent CRITICAL.
+        ("QC003", "C", "CRITICAL", f"TRS > 150% (aberration technique)",
+         f"trs_pct IS NOT NULL AND trs_pct > 150"),
         ("QC003B", "C", "CRITICAL", "TRS négatif",
          "trs_pct IS NOT NULL AND trs_pct < 0"),
-        ("QC003C", "C", "WARNING",  f"TRS < {TRS_MIN_WARNING}% (sous-performance)",
+        ("QC003C", "C", "INFO",  f"TRS < {TRS_MIN_WARNING}% (sous-performance réelle, à surveiller)",
          f"trs_pct IS NOT NULL AND trs_pct >= 0 AND trs_pct < {TRS_MIN_WARNING}"),
-        ("QC003D", "C", "INFO",     f"TRS entre {TRS_MAX_INFO}% et {TRS_MAX_CRITICAL}% (sur-performance à vérifier)",
-         f"trs_pct IS NOT NULL AND trs_pct > {TRS_MAX_INFO} AND trs_pct <= {TRS_MAX_CRITICAL}"),
+        ("QC003D", "C", "INFO",     f"TRS > {TRS_MAX_INFO}% (sur-performance réelle, à surveiller)",
+         f"trs_pct IS NOT NULL AND trs_pct > {TRS_MAX_INFO} AND trs_pct <= 150"),
         # Composantes TRS
-        ("QC004", "C", "CRITICAL", "Disponibilité > 120% (aberration)",
-         f"disponibilite_pct IS NOT NULL AND disponibilite_pct > {TRS_MAX_CRITICAL}"),
-        ("QC004B", "C", "WARNING",  f"Disponibilité < {TRS_MIN_WARNING}%",
+        ("QC004", "C", "CRITICAL", "Disponibilité > 150% (aberration)",
+         f"disponibilite_pct IS NOT NULL AND disponibilite_pct > 150"),
+        ("QC004B", "C", "INFO",  f"Disponibilité < {TRS_MIN_WARNING}% (sous-performance réelle)",
          f"disponibilite_pct IS NOT NULL AND disponibilite_pct < {TRS_MIN_WARNING}"),
-        ("QC005", "C", "CRITICAL", "Performance > 120% (aberration)",
-         f"performance_pct IS NOT NULL AND performance_pct > {TRS_MAX_CRITICAL}"),
-        ("QC005B", "C", "WARNING",  f"Performance < {TRS_MIN_WARNING}%",
+        ("QC005", "C", "CRITICAL", "Performance > 150% (aberration)",
+         f"performance_pct IS NOT NULL AND performance_pct > 150"),
+        ("QC005B", "C", "INFO",  f"Performance < {TRS_MIN_WARNING}% (sous-performance réelle)",
          f"performance_pct IS NOT NULL AND performance_pct < {TRS_MIN_WARNING}"),
-        ("QC006", "C", "CRITICAL", "Qualité > 120% (aberration)",
-         f"qualite_pct IS NOT NULL AND qualite_pct > {TRS_MAX_CRITICAL}"),
-        ("QC006B", "C", "WARNING",  f"Qualité < {QUALITE_MIN_WARNING}% (taux rebut élevé)",
+        ("QC006", "C", "CRITICAL", "Qualité > 150% (aberration)",
+         f"qualite_pct IS NOT NULL AND qualite_pct > 150"),
+        ("QC006B", "C", "INFO",  f"Qualité < {QUALITE_MIN_WARNING}% (taux rebut réel, à surveiller)",
          f"qualite_pct IS NOT NULL AND qualite_pct < {QUALITE_MIN_WARNING}"),
         # Intégrité
         ("QA009", "A", "CRITICAL", "code_of null ou vide",

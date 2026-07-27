@@ -3,7 +3,7 @@
   
     
 
-  create  table "airflow"."gold"."fact_arrets"
+  create  table "airflow"."gold"."fact_arrets__dbt_tmp"
   
   
     as

@@ -11304,3 +11304,1649 @@ having count(*) > 1
 [0m13:29:08.803796 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD51C674F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD5007F880>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD55B3E4A0>]}
 [0m13:29:08.805863 [debug] [MainThread]: Flushing usage events
 [0m13:29:10.060616 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:08:31.490180 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C1FEEA34C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C181272DA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C181272F80>]}
+
+
+============================== 15:08:31.506245 | e8d2b079-f782-4bf6-b704-14adf689ccd5 ==============================
+[0m15:08:31.506245 [info ] [MainThread]: Running with dbt=1.10.7
+[0m15:08:31.508473 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': 'Y:\\PROJET VALISOA 2026\\data_pipeline\\airflow\\dags\\dbt\\valisoa_gold\\logs', 'version_check': 'True', 'profiles_dir': 'Y:\\PROJET VALISOA 2026\\data_pipeline\\airflow\\dags\\dbt\\valisoa_gold', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt run --full-refresh --select fact_rebuts', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m15:08:32.607815 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'e8d2b079-f782-4bf6-b704-14adf689ccd5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C1813806A0>]}
+[0m15:08:32.973618 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'e8d2b079-f782-4bf6-b704-14adf689ccd5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C181381030>]}
+[0m15:08:32.982898 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m15:08:34.398850 [debug] [MainThread]: checksum: 44f4b502e2ddc67beed4db71ce39b63f2d3b7fc0b96e49a69b096c8f6cc370bc, vars: {}, profile: , target: , version: 1.10.7
+[0m15:08:35.567942 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m15:08:35.571188 [debug] [MainThread]: Partial parsing: updated file: valisoa_gold://models\marts\facts\fact_rebuts.sql
+[0m15:08:37.974660 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'e8d2b079-f782-4bf6-b704-14adf689ccd5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C182B51150>]}
+[0m15:08:38.739733 [debug] [MainThread]: Wrote artifact WritableManifest to Y:\PROJET VALISOA 2026\data_pipeline\airflow\dags\dbt\valisoa_gold\target\manifest.json
+[0m15:08:38.755370 [debug] [MainThread]: Wrote artifact SemanticManifest to Y:\PROJET VALISOA 2026\data_pipeline\airflow\dags\dbt\valisoa_gold\target\semantic_manifest.json
+[0m15:08:38.868461 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'e8d2b079-f782-4bf6-b704-14adf689ccd5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C182B509D0>]}
+[0m15:08:38.870673 [info ] [MainThread]: Found 13 models, 18 data tests, 6 sources, 437 macros
+[0m15:08:38.873206 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'e8d2b079-f782-4bf6-b704-14adf689ccd5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C182B51EA0>]}
+[0m15:08:38.881495 [info ] [MainThread]: 
+[0m15:08:38.883519 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m15:08:38.892260 [info ] [MainThread]: 
+[0m15:08:38.897350 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m15:08:38.911787 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow'
+[0m15:08:39.342414 [debug] [ThreadPool]: Using postgres connection "list_airflow"
+[0m15:08:39.344479 [debug] [ThreadPool]: On list_airflow: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m15:08:39.345519 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:08:39.555974 [debug] [ThreadPool]: SQL status: SELECT 34 in 0.209 seconds
+[0m15:08:39.560752 [debug] [ThreadPool]: On list_airflow: Close
+[0m15:08:39.590622 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow_gold_intermediate'
+[0m15:08:39.606912 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow_gold'
+[0m15:08:39.622068 [debug] [ThreadPool]: Using postgres connection "list_airflow_gold_intermediate"
+[0m15:08:39.633630 [debug] [ThreadPool]: Using postgres connection "list_airflow_gold"
+[0m15:08:39.636349 [debug] [ThreadPool]: On list_airflow_gold_intermediate: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow_gold_intermediate"} */
+select
+      'airflow' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'gold_intermediate'
+    union all
+    select
+      'airflow' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'gold_intermediate'
+    union all
+    select
+      'airflow' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'gold_intermediate'
+  
+[0m15:08:39.637925 [debug] [ThreadPool]: On list_airflow_gold: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow_gold"} */
+select
+      'airflow' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'gold'
+    union all
+    select
+      'airflow' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'gold'
+    union all
+    select
+      'airflow' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'gold'
+  
+[0m15:08:39.641093 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow_gold_ml'
+[0m15:08:39.644231 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:08:39.646454 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow_gold_staging'
+[0m15:08:39.649936 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:08:39.660140 [debug] [ThreadPool]: Using postgres connection "list_airflow_gold_ml"
+[0m15:08:39.678309 [debug] [ThreadPool]: Using postgres connection "list_airflow_gold_staging"
+[0m15:08:39.680859 [debug] [ThreadPool]: On list_airflow_gold_ml: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow_gold_ml"} */
+select
+      'airflow' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'gold_ml'
+    union all
+    select
+      'airflow' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'gold_ml'
+    union all
+    select
+      'airflow' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'gold_ml'
+  
+[0m15:08:39.685295 [debug] [ThreadPool]: On list_airflow_gold_staging: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow_gold_staging"} */
+select
+      'airflow' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'gold_staging'
+    union all
+    select
+      'airflow' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'gold_staging'
+    union all
+    select
+      'airflow' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'gold_staging'
+  
+[0m15:08:39.689617 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:08:39.691975 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:08:40.270984 [debug] [ThreadPool]: SQL status: SELECT 1 in 0.627 seconds
+[0m15:08:40.277856 [debug] [ThreadPool]: On list_airflow_gold_intermediate: ROLLBACK
+[0m15:08:40.284061 [debug] [ThreadPool]: On list_airflow_gold_intermediate: Close
+[0m15:08:40.331253 [debug] [ThreadPool]: SQL status: SELECT 1 in 0.643 seconds
+[0m15:08:40.333499 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.640 seconds
+[0m15:08:40.340526 [debug] [ThreadPool]: On list_airflow_gold_ml: ROLLBACK
+[0m15:08:40.345701 [debug] [ThreadPool]: On list_airflow_gold_staging: ROLLBACK
+[0m15:08:40.355722 [debug] [ThreadPool]: On list_airflow_gold_staging: Close
+[0m15:08:40.357889 [debug] [ThreadPool]: On list_airflow_gold_ml: Close
+[0m15:08:40.409673 [debug] [ThreadPool]: SQL status: SELECT 7 in 0.761 seconds
+[0m15:08:40.416171 [debug] [ThreadPool]: On list_airflow_gold: ROLLBACK
+[0m15:08:40.431149 [debug] [ThreadPool]: On list_airflow_gold: Close
+[0m15:08:40.474778 [debug] [MainThread]: Using postgres connection "master"
+[0m15:08:40.477635 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m15:08:40.485610 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m15:08:41.155203 [debug] [MainThread]: SQL status: SELECT 12 in 0.670 seconds
+[0m15:08:41.163082 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'e8d2b079-f782-4bf6-b704-14adf689ccd5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C1830055A0>]}
+[0m15:08:41.165837 [debug] [MainThread]: On master: ROLLBACK
+[0m15:08:41.182511 [debug] [MainThread]: On master: COMMIT
+[0m15:08:41.183539 [debug] [MainThread]: Using postgres connection "master"
+[0m15:08:41.187048 [debug] [MainThread]: On master: COMMIT
+[0m15:08:41.194940 [debug] [MainThread]: SQL status: COMMIT in 0.006 seconds
+[0m15:08:41.196644 [debug] [MainThread]: On master: Close
+[0m15:08:41.221873 [debug] [Thread-1 (]: Began running node model.valisoa_gold.fact_rebuts
+[0m15:08:41.224911 [info ] [Thread-1 (]: 1 of 1 START sql incremental model gold.fact_rebuts ............................ [RUN]
+[0m15:08:41.229365 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.valisoa_gold.fact_rebuts'
+[0m15:08:41.231417 [debug] [Thread-1 (]: Began compiling node model.valisoa_gold.fact_rebuts
+[0m15:08:41.299997 [debug] [Thread-1 (]: Writing injected SQL for node "model.valisoa_gold.fact_rebuts"
+[0m15:08:41.305646 [debug] [Thread-1 (]: Began executing node model.valisoa_gold.fact_rebuts
+[0m15:08:41.624134 [debug] [Thread-1 (]: Writing runtime sql for node "model.valisoa_gold.fact_rebuts"
+[0m15:08:41.671704 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.fact_rebuts"
+[0m15:08:41.675524 [debug] [Thread-1 (]: On model.valisoa_gold.fact_rebuts: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_rebuts"} */
+
+      
+  
+    
+
+  create  table "airflow"."gold"."fact_rebuts__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+-- Grain : une saisie de rebut. Jointe à machine/produit via code_of
+-- (résolu depuis int_production_cadence, qui porte déjà machine et
+-- produit_code pour l'OF correspondant), et à temps via date_saisie.
+
+select
+    
+    md5(
+        
+            coalesce(cast(sr.source_id as text), '')
+    )
+         as rebut_key,
+    sr.code_of,
+    dm.machine_key,
+    dp.produit_key,
+    sr.composant_cible,
+    sr.motif,
+    dt.temps_key,
+    sr.quantite,
+    sr.date_saisie
+from "airflow"."gold_staging"."stg_rebuts" sr
+left join "airflow"."gold_intermediate"."int_production_cadence" ipc
+    on ipc.code_of = sr.code_of
+left join "airflow"."gold"."dim_machine" dm
+    on dm.machine = ipc.machine
+left join "airflow"."gold"."dim_produit" dp
+    on dp.code = ipc.produit_code
+left join "airflow"."gold"."dim_temps" dt
+    on dt.date = date_trunc('day', sr.date_saisie)::date
+
+
+  );
+  
+  
+[0m15:08:41.679797 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m15:08:42.805422 [debug] [Thread-1 (]: SQL status: SELECT 638 in 1.127 seconds
+[0m15:08:42.847961 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.fact_rebuts"
+[0m15:08:42.850024 [debug] [Thread-1 (]: On model.valisoa_gold.fact_rebuts: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_rebuts"} */
+alter table "airflow"."gold"."fact_rebuts" rename to "fact_rebuts__dbt_backup"
+[0m15:08:42.867156 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.014 seconds
+[0m15:08:42.880608 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.fact_rebuts"
+[0m15:08:42.884346 [debug] [Thread-1 (]: On model.valisoa_gold.fact_rebuts: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_rebuts"} */
+alter table "airflow"."gold"."fact_rebuts__dbt_tmp" rename to "fact_rebuts"
+[0m15:08:42.891140 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.005 seconds
+[0m15:08:42.965545 [debug] [Thread-1 (]: On model.valisoa_gold.fact_rebuts: COMMIT
+[0m15:08:42.967817 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.fact_rebuts"
+[0m15:08:42.967817 [debug] [Thread-1 (]: On model.valisoa_gold.fact_rebuts: COMMIT
+[0m15:08:42.998825 [debug] [Thread-1 (]: SQL status: COMMIT in 0.014 seconds
+[0m15:08:43.025678 [debug] [Thread-1 (]: Applying DROP to: "airflow"."gold"."fact_rebuts__dbt_backup"
+[0m15:08:43.044887 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.fact_rebuts"
+[0m15:08:43.047669 [debug] [Thread-1 (]: On model.valisoa_gold.fact_rebuts: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_rebuts"} */
+drop table if exists "airflow"."gold"."fact_rebuts__dbt_backup" cascade
+[0m15:08:43.161463 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.111 seconds
+[0m15:08:43.172540 [debug] [Thread-1 (]: On model.valisoa_gold.fact_rebuts: Close
+[0m15:08:43.180628 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'e8d2b079-f782-4bf6-b704-14adf689ccd5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C1830BBAF0>]}
+[0m15:08:43.184189 [info ] [Thread-1 (]: 1 of 1 OK created sql incremental model gold.fact_rebuts ....................... [[32mSELECT 638[0m in 1.95s]
+[0m15:08:43.189507 [debug] [Thread-1 (]: Finished running node model.valisoa_gold.fact_rebuts
+[0m15:08:43.196106 [debug] [MainThread]: On master: COMMIT
+[0m15:08:43.198135 [debug] [MainThread]: Using postgres connection "master"
+[0m15:08:43.200188 [debug] [MainThread]: On master: COMMIT
+[0m15:08:43.202233 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m15:08:43.532352 [debug] [MainThread]: SQL status: COMMIT in 0.330 seconds
+[0m15:08:43.534393 [debug] [MainThread]: On master: Close
+[0m15:08:43.536757 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m15:08:43.538496 [debug] [MainThread]: Connection 'list_airflow' was properly closed.
+[0m15:08:43.539063 [debug] [MainThread]: Connection 'list_airflow_gold_intermediate' was properly closed.
+[0m15:08:43.541650 [debug] [MainThread]: Connection 'list_airflow_gold' was properly closed.
+[0m15:08:43.542700 [debug] [MainThread]: Connection 'list_airflow_gold_ml' was properly closed.
+[0m15:08:43.545217 [debug] [MainThread]: Connection 'list_airflow_gold_staging' was properly closed.
+[0m15:08:43.546877 [debug] [MainThread]: Connection 'model.valisoa_gold.fact_rebuts' was properly closed.
+[0m15:08:43.549121 [info ] [MainThread]: 
+[0m15:08:43.550988 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 4.65 seconds (4.65s).
+[0m15:08:43.555014 [debug] [MainThread]: Command end result
+[0m15:08:43.747814 [debug] [MainThread]: Wrote artifact WritableManifest to Y:\PROJET VALISOA 2026\data_pipeline\airflow\dags\dbt\valisoa_gold\target\manifest.json
+[0m15:08:43.797595 [debug] [MainThread]: Wrote artifact SemanticManifest to Y:\PROJET VALISOA 2026\data_pipeline\airflow\dags\dbt\valisoa_gold\target\semantic_manifest.json
+[0m15:08:43.830801 [debug] [MainThread]: Wrote artifact RunExecutionResult to Y:\PROJET VALISOA 2026\data_pipeline\airflow\dags\dbt\valisoa_gold\target\run_results.json
+[0m15:08:43.832173 [info ] [MainThread]: 
+[0m15:08:43.837097 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m15:08:43.841056 [info ] [MainThread]: 
+[0m15:08:43.843832 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m15:08:43.864077 [debug] [MainThread]: Command `dbt run` succeeded at 15:08:43.853163 after 13.08 seconds
+[0m15:08:43.869455 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C1FEEA34C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C1813806A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C181381030>]}
+[0m15:08:43.871715 [debug] [MainThread]: Flushing usage events
+[0m15:08:45.412220 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m10:20:34.380655 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000220DE9274F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000220E0C62DD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000220E0C62FB0>]}
+
+
+============================== 10:20:34.400411 | 4c0ea8e1-b9b9-482b-afd6-48ce090a9af6 ==============================
+[0m10:20:34.400411 [info ] [MainThread]: Running with dbt=1.10.7
+[0m10:20:34.404102 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': 'Y:\\PROJET VALISOA 2026\\data_pipeline\\airflow\\dags\\dbt\\valisoa_gold\\logs', 'profiles_dir': 'Y:\\PROJET VALISOA 2026\\data_pipeline\\airflow\\dags\\dbt\\valisoa_gold', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt run --full-refresh', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m10:20:36.124554 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '4c0ea8e1-b9b9-482b-afd6-48ce090a9af6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000220DCE7AE00>]}
+[0m10:20:36.485761 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '4c0ea8e1-b9b9-482b-afd6-48ce090a9af6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000220DCFB4910>]}
+[0m10:20:36.490337 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m10:20:37.999504 [debug] [MainThread]: checksum: 44f4b502e2ddc67beed4db71ce39b63f2d3b7fc0b96e49a69b096c8f6cc370bc, vars: {}, profile: , target: , version: 1.10.7
+[0m10:20:39.007656 [info ] [MainThread]: Unable to do partial parsing because profile has changed
+[0m10:20:39.013808 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '4c0ea8e1-b9b9-482b-afd6-48ce090a9af6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000220E03A7820>]}
+[0m10:20:48.647739 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '4c0ea8e1-b9b9-482b-afd6-48ce090a9af6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000220E23BF280>]}
+[0m10:20:49.284751 [debug] [MainThread]: Wrote artifact WritableManifest to Y:\PROJET VALISOA 2026\data_pipeline\airflow\dags\dbt\valisoa_gold\target\manifest.json
+[0m10:20:49.302578 [debug] [MainThread]: Wrote artifact SemanticManifest to Y:\PROJET VALISOA 2026\data_pipeline\airflow\dags\dbt\valisoa_gold\target\semantic_manifest.json
+[0m10:20:49.456606 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '4c0ea8e1-b9b9-482b-afd6-48ce090a9af6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000220E23E0F10>]}
+[0m10:20:49.460554 [info ] [MainThread]: Found 13 models, 18 data tests, 6 sources, 437 macros
+[0m10:20:49.463874 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '4c0ea8e1-b9b9-482b-afd6-48ce090a9af6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000220E23E3EE0>]}
+[0m10:20:49.511696 [info ] [MainThread]: 
+[0m10:20:49.519858 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m10:20:49.525560 [info ] [MainThread]: 
+[0m10:20:49.530494 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m10:20:49.732127 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow'
+[0m10:20:49.761800 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow'
+[0m10:20:49.810102 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow'
+[0m10:20:49.872953 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow'
+[0m10:20:50.321917 [debug] [ThreadPool]: Using postgres connection "list_airflow"
+[0m10:20:50.326006 [debug] [ThreadPool]: Using postgres connection "list_airflow"
+[0m10:20:50.330765 [debug] [ThreadPool]: Using postgres connection "list_airflow"
+[0m10:20:50.332349 [debug] [ThreadPool]: Using postgres connection "list_airflow"
+[0m10:20:50.334905 [debug] [ThreadPool]: On list_airflow: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m10:20:50.336770 [debug] [ThreadPool]: On list_airflow: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m10:20:50.338890 [debug] [ThreadPool]: On list_airflow: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m10:20:50.341463 [debug] [ThreadPool]: On list_airflow: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m10:20:50.344040 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:20:50.346712 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:20:50.348244 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:20:50.350802 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:20:53.109551 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Name or service not known
+
+[0m10:20:53.110883 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Name or service not known
+
+[0m10:20:53.124947 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Name or service not known
+
+[0m10:20:53.127628 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Name or service not known
+
+[0m10:20:55.391480 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m10:20:55.393046 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m10:20:55.395631 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m10:20:55.398145 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m10:20:55.400176 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m10:20:55.404354 [debug] [ThreadPool]: On list_airflow: No close available on handle
+[0m10:20:55.402276 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m10:20:55.407569 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m10:20:55.410396 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m10:20:55.413947 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m10:20:55.415839 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m10:20:55.418476 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m10:20:55.421071 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m10:20:55.422600 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m10:20:55.425699 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m10:20:55.427249 [debug] [ThreadPool]: On list_airflow: No close available on handle
+[0m10:20:55.429276 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m10:20:55.431799 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m10:20:55.435349 [debug] [ThreadPool]: On list_airflow: No close available on handle
+[0m10:20:55.436889 [debug] [ThreadPool]: On list_airflow: No close available on handle
+[0m10:20:55.441922 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m10:20:55.442950 [debug] [MainThread]: Connection 'list_airflow' was properly closed.
+[0m10:20:55.445501 [debug] [MainThread]: Connection 'list_airflow' was properly closed.
+[0m10:20:55.448127 [debug] [MainThread]: Connection 'list_airflow' was properly closed.
+[0m10:20:55.450158 [debug] [MainThread]: Connection 'list_airflow' was properly closed.
+[0m10:20:55.451671 [info ] [MainThread]: 
+[0m10:20:55.454704 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 5.92 seconds (5.92s).
+[0m10:20:55.457252 [error] [MainThread]: Encountered an error:
+Database Error
+  could not translate host name "postgres" to address: Name or service not known
+  
+[0m10:20:55.462054 [debug] [MainThread]: Command `dbt run` failed at 10:20:55.462054 after 22.19 seconds
+[0m10:20:55.470264 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000220DE9274F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000220E23E0E20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000220E23EE4D0>]}
+[0m10:20:55.473834 [debug] [MainThread]: Flushing usage events
+[0m10:20:56.772355 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m10:24:35.959648 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C9D77B34F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C9D9AF1270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C9D9AF10C0>]}
+
+
+============================== 10:24:35.972228 | 41538fd2-35a7-4d42-9041-d0f9bacf91a6 ==============================
+[0m10:24:35.972228 [info ] [MainThread]: Running with dbt=1.10.7
+[0m10:24:35.977089 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': 'Y:/PROJET VALISOA 2026/data_pipeline', 'log_path': 'Y:\\PROJET VALISOA 2026\\data_pipeline\\airflow\\dags\\dbt\\valisoa_gold\\logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt run --full-refresh', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m10:24:35.989303 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'valisoa_gold'
+[0m10:24:35.996920 [debug] [MainThread]: Command `dbt run` failed at 10:24:35.994079 after 0.83 seconds
+[0m10:24:35.999973 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C9D77B34F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C9D9AF1F30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C9D9AF22C0>]}
+[0m10:24:36.004414 [debug] [MainThread]: Flushing usage events
+[0m10:24:37.464445 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m10:42:36.587264 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013963F874C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000139662BEDA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000139662BEF80>]}
+
+
+============================== 10:42:36.594531 | 21b7a502-c2c9-4881-91d1-67353ff3e316 ==============================
+[0m10:42:36.594531 [info ] [MainThread]: Running with dbt=1.10.7
+[0m10:42:36.595897 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'Y:\\PROJET VALISOA 2026\\data_pipeline\\airflow\\dags\\dbt\\valisoa_gold\\logs', 'profiles_dir': 'Y:/PROJET VALISOA 2026/data_pipeline/airflow/dags/dbt/valisoa_gold', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'invocation_command': 'dbt run --full-refresh', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m10:42:37.136637 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000139624FADD0>]}
+[0m10:42:37.290225 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013962E22F80>]}
+[0m10:42:37.292888 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m10:42:37.899558 [debug] [MainThread]: checksum: 44f4b502e2ddc67beed4db71ce39b63f2d3b7fc0b96e49a69b096c8f6cc370bc, vars: {}, profile: , target: , version: 1.10.7
+[0m10:42:38.170927 [info ] [MainThread]: Unable to do partial parsing because profile has changed
+[0m10:42:38.170927 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013965A037F0>]}
+[0m10:42:41.986936 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013967A227D0>]}
+[0m10:42:42.212010 [debug] [MainThread]: Wrote artifact WritableManifest to Y:\PROJET VALISOA 2026\data_pipeline\airflow\dags\dbt\valisoa_gold\target\manifest.json
+[0m10:42:42.218037 [debug] [MainThread]: Wrote artifact SemanticManifest to Y:\PROJET VALISOA 2026\data_pipeline\airflow\dags\dbt\valisoa_gold\target\semantic_manifest.json
+[0m10:42:42.266137 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001396794F760>]}
+[0m10:42:42.267676 [info ] [MainThread]: Found 13 models, 18 data tests, 6 sources, 437 macros
+[0m10:42:42.268556 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001396794DBD0>]}
+[0m10:42:42.272534 [info ] [MainThread]: 
+[0m10:42:42.273584 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m10:42:42.275556 [info ] [MainThread]: 
+[0m10:42:42.276553 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m10:42:42.299862 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow'
+[0m10:42:42.314595 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow'
+[0m10:42:42.352024 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow'
+[0m10:42:42.358145 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow'
+[0m10:42:42.469306 [debug] [ThreadPool]: Using postgres connection "list_airflow"
+[0m10:42:42.470356 [debug] [ThreadPool]: Using postgres connection "list_airflow"
+[0m10:42:42.471574 [debug] [ThreadPool]: On list_airflow: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m10:42:42.471574 [debug] [ThreadPool]: Using postgres connection "list_airflow"
+[0m10:42:42.472573 [debug] [ThreadPool]: Using postgres connection "list_airflow"
+[0m10:42:42.474678 [debug] [ThreadPool]: On list_airflow: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m10:42:42.475689 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:42:42.476704 [debug] [ThreadPool]: On list_airflow: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m10:42:42.478177 [debug] [ThreadPool]: On list_airflow: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m10:42:42.479179 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:42:42.481343 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:42:42.482566 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:42:42.604108 [debug] [ThreadPool]: SQL status: SELECT 48 in 0.123 seconds
+[0m10:42:42.605757 [debug] [ThreadPool]: SQL status: SELECT 48 in 0.130 seconds
+[0m10:42:42.607357 [debug] [ThreadPool]: On list_airflow: Close
+[0m10:42:42.608368 [debug] [ThreadPool]: SQL status: SELECT 48 in 0.127 seconds
+[0m10:42:42.609793 [debug] [ThreadPool]: SQL status: SELECT 48 in 0.131 seconds
+[0m10:42:42.612105 [debug] [ThreadPool]: On list_airflow: Close
+[0m10:42:42.616726 [debug] [ThreadPool]: On list_airflow: Close
+[0m10:42:42.623125 [debug] [ThreadPool]: On list_airflow: Close
+[0m10:42:42.630503 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow_gold_ml'
+[0m10:42:42.643900 [debug] [ThreadPool]: Using postgres connection "list_airflow_gold_ml"
+[0m10:42:42.644898 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow_gold_intermediate'
+[0m10:42:42.646895 [debug] [ThreadPool]: On list_airflow_gold_ml: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow_gold_ml"} */
+select
+      'airflow' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'gold_ml'
+    union all
+    select
+      'airflow' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'gold_ml'
+    union all
+    select
+      'airflow' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'gold_ml'
+  
+[0m10:42:42.648317 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow_gold_staging'
+[0m10:42:42.653449 [debug] [ThreadPool]: Using postgres connection "list_airflow_gold_intermediate"
+[0m10:42:42.654805 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow_gold'
+[0m10:42:42.656238 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:42:42.661215 [debug] [ThreadPool]: Using postgres connection "list_airflow_gold_staging"
+[0m10:42:42.662234 [debug] [ThreadPool]: On list_airflow_gold_intermediate: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow_gold_intermediate"} */
+select
+      'airflow' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'gold_intermediate'
+    union all
+    select
+      'airflow' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'gold_intermediate'
+    union all
+    select
+      'airflow' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'gold_intermediate'
+  
+[0m10:42:42.666765 [debug] [ThreadPool]: Using postgres connection "list_airflow_gold"
+[0m10:42:42.669279 [debug] [ThreadPool]: On list_airflow_gold_staging: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow_gold_staging"} */
+select
+      'airflow' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'gold_staging'
+    union all
+    select
+      'airflow' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'gold_staging'
+    union all
+    select
+      'airflow' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'gold_staging'
+  
+[0m10:42:42.670796 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:42:42.672585 [debug] [ThreadPool]: On list_airflow_gold: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "list_airflow_gold"} */
+select
+      'airflow' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'gold'
+    union all
+    select
+      'airflow' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'gold'
+    union all
+    select
+      'airflow' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'gold'
+  
+[0m10:42:42.674274 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:42:42.675474 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:42:42.777033 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.103 seconds
+[0m10:42:42.778230 [debug] [ThreadPool]: SQL status: SELECT 1 in 0.121 seconds
+[0m10:42:42.781414 [debug] [ThreadPool]: On list_airflow_gold_staging: ROLLBACK
+[0m10:42:42.782575 [debug] [ThreadPool]: SQL status: SELECT 1 in 0.112 seconds
+[0m10:42:42.784416 [debug] [ThreadPool]: SQL status: SELECT 7 in 0.108 seconds
+[0m10:42:42.787030 [debug] [ThreadPool]: On list_airflow_gold_ml: ROLLBACK
+[0m10:42:42.789655 [debug] [ThreadPool]: On list_airflow_gold_intermediate: ROLLBACK
+[0m10:42:42.791015 [debug] [ThreadPool]: On list_airflow_gold_staging: Close
+[0m10:42:42.793692 [debug] [ThreadPool]: On list_airflow_gold: ROLLBACK
+[0m10:42:42.798068 [debug] [ThreadPool]: On list_airflow_gold_intermediate: Close
+[0m10:42:42.799625 [debug] [ThreadPool]: On list_airflow_gold: Close
+[0m10:42:42.801420 [debug] [ThreadPool]: On list_airflow_gold_ml: Close
+[0m10:42:42.822121 [debug] [MainThread]: Using postgres connection "master"
+[0m10:42:42.823230 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m10:42:42.823778 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m10:42:42.907364 [debug] [MainThread]: SQL status: SELECT 12 in 0.083 seconds
+[0m10:42:42.911155 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013967A61330>]}
+[0m10:42:42.912755 [debug] [MainThread]: On master: ROLLBACK
+[0m10:42:42.915605 [debug] [MainThread]: On master: COMMIT
+[0m10:42:42.916733 [debug] [MainThread]: Using postgres connection "master"
+[0m10:42:42.918391 [debug] [MainThread]: On master: COMMIT
+[0m10:42:42.923712 [debug] [MainThread]: SQL status: COMMIT in 0.004 seconds
+[0m10:42:42.924769 [debug] [MainThread]: On master: Close
+[0m10:42:42.941391 [debug] [Thread-1 (]: Began running node model.valisoa_gold.stg_arrets
+[0m10:42:42.944469 [debug] [Thread-2 (]: Began running node model.valisoa_gold.stg_cadences
+[0m10:42:42.945590 [debug] [Thread-3 (]: Began running node model.valisoa_gold.stg_realisations
+[0m10:42:42.949238 [debug] [Thread-4 (]: Began running node model.valisoa_gold.stg_rebuts
+[0m10:42:42.947887 [info ] [Thread-1 (]: 1 of 13 START sql view model gold_staging.stg_arrets ........................... [RUN]
+[0m10:42:42.952203 [info ] [Thread-2 (]: 2 of 13 START sql view model gold_staging.stg_cadences ......................... [RUN]
+[0m10:42:42.959884 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.valisoa_gold.stg_arrets'
+[0m10:42:42.953735 [info ] [Thread-3 (]: 3 of 13 START sql view model gold_staging.stg_realisations ..................... [RUN]
+[0m10:42:42.963694 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.valisoa_gold.stg_cadences'
+[0m10:42:42.957823 [info ] [Thread-4 (]: 4 of 13 START sql view model gold_staging.stg_rebuts ........................... [RUN]
+[0m10:42:42.973539 [debug] [Thread-1 (]: Began compiling node model.valisoa_gold.stg_arrets
+[0m10:42:42.977518 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.valisoa_gold.stg_realisations'
+[0m10:42:42.978519 [debug] [Thread-2 (]: Began compiling node model.valisoa_gold.stg_cadences
+[0m10:42:42.980572 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.valisoa_gold.stg_rebuts'
+[0m10:42:43.024083 [debug] [Thread-3 (]: Began compiling node model.valisoa_gold.stg_realisations
+[0m10:42:43.022635 [debug] [Thread-1 (]: Writing injected SQL for node "model.valisoa_gold.stg_arrets"
+[0m10:42:43.035858 [debug] [Thread-2 (]: Writing injected SQL for node "model.valisoa_gold.stg_cadences"
+[0m10:42:43.038860 [debug] [Thread-4 (]: Began compiling node model.valisoa_gold.stg_rebuts
+[0m10:42:43.051760 [debug] [Thread-3 (]: Writing injected SQL for node "model.valisoa_gold.stg_realisations"
+[0m10:42:43.061888 [debug] [Thread-4 (]: Writing injected SQL for node "model.valisoa_gold.stg_rebuts"
+[0m10:42:43.064988 [debug] [Thread-1 (]: Began executing node model.valisoa_gold.stg_arrets
+[0m10:42:43.082957 [debug] [Thread-2 (]: Began executing node model.valisoa_gold.stg_cadences
+[0m10:42:43.113823 [debug] [Thread-3 (]: Began executing node model.valisoa_gold.stg_realisations
+[0m10:42:43.134338 [debug] [Thread-4 (]: Began executing node model.valisoa_gold.stg_rebuts
+[0m10:42:43.213042 [debug] [Thread-1 (]: Writing runtime sql for node "model.valisoa_gold.stg_arrets"
+[0m10:42:43.214154 [debug] [Thread-2 (]: Writing runtime sql for node "model.valisoa_gold.stg_cadences"
+[0m10:42:43.222672 [debug] [Thread-3 (]: Writing runtime sql for node "model.valisoa_gold.stg_realisations"
+[0m10:42:43.232867 [debug] [Thread-4 (]: Writing runtime sql for node "model.valisoa_gold.stg_rebuts"
+[0m10:42:43.235663 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.stg_arrets"
+[0m10:42:43.237415 [debug] [Thread-1 (]: On model.valisoa_gold.stg_arrets: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_arrets"} */
+
+  create view "airflow"."gold_staging"."stg_arrets__dbt_tmp"
+    
+    
+  as (
+    select
+    _id                         as source_id,
+    trim(code_of)                as code_of,
+    trim(machine)                as machine,
+    trim(motif)                  as motif,
+    trim(type_arret)             as type_arret,
+    date_debut,
+    date_fin,
+    duree_min,
+    validated_at
+from "airflow"."validated"."raw_excel_arrets"
+  );
+[0m10:42:43.238989 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m10:42:43.253376 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.stg_cadences"
+[0m10:42:43.255197 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.stg_rebuts"
+[0m10:42:43.258665 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.stg_realisations"
+[0m10:42:43.261204 [debug] [Thread-2 (]: On model.valisoa_gold.stg_cadences: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_cadences"} */
+
+  create view "airflow"."gold_staging"."stg_cadences__dbt_tmp"
+    
+    
+  as (
+    select
+    _id                         as source_id,
+    trim(code_of)                as code_of,
+    qte_produite,
+    trs_pct,
+    disponibilite_pct,
+    performance_pct,
+    qualite_pct,
+    validated_at
+from "airflow"."validated"."raw_excel_cadences"
+  );
+[0m10:42:43.263873 [debug] [Thread-4 (]: On model.valisoa_gold.stg_rebuts: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_rebuts"} */
+
+  create view "airflow"."gold_staging"."stg_rebuts__dbt_tmp"
+    
+    
+  as (
+    select
+    _id                         as source_id,
+    trim(code_of)                as code_of,
+    trim(motif)                  as motif,
+    trim(composant_cible)        as composant_cible,
+    quantite,
+    validated_at                 as date_saisie
+from "airflow"."validated"."raw_excel_rebuts"
+  );
+[0m10:42:43.266277 [debug] [Thread-3 (]: On model.valisoa_gold.stg_realisations: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_realisations"} */
+
+  create view "airflow"."gold_staging"."stg_realisations__dbt_tmp"
+    
+    
+  as (
+    -- Nettoyage léger sur validated.raw_excel_realisations (Silver)
+-- Une ligne = un OF, avec les quantités prévues/produites/rebutées
+--
+-- DÉDUPLICATION EN DEUX TEMPS, deux phénomènes distincts observés :
+--   1. Doublons d'ingestion stricts (fichiers Excel archivés qui se
+--      chevauchent) : mêmes valeurs réintroduites à l'identique.
+--   2. Relevés successifs légitimes d'un même OF en cours d'exécution
+--      (plusieurs snapshots avec qte_produite=0 jusqu'au relevé final
+--      qui contient les quantités réelles et la date_fin la plus tardive).
+--
+-- On garde donc, par code_of, le relevé le plus avancé : celui avec la
+-- date_fin la plus tardive (le relevé final = l'état le plus complet de
+-- l'OF), et non le plus récent selon validated_at (qui est identique
+-- pour tous les doublons d'ingestion et ne permet pas de les départager
+-- correctement).
+
+with realisations_ranked as (
+    select
+        _id,
+        code_of,
+        atelier,
+        machine,
+        produit,
+        date_debut,
+        date_fin,
+        qte_prevue,
+        qte_produite,
+        qte_rebut,
+        statut,
+        quality_score,
+        validated_at,
+        row_number() over (
+            partition by trim(code_of)
+            order by date_fin desc nulls last, qte_produite desc, _id desc
+        ) as rn
+    from "airflow"."validated"."raw_excel_realisations"
+    where code_of is not null and trim(code_of) != ''
+)
+
+select
+    _id                         as source_id,
+    trim(code_of)                as code_of,
+    trim(atelier)                as atelier,
+    trim(machine)                as machine,
+    trim(produit)                as produit,
+    date_debut,
+    date_fin,
+    qte_prevue,
+    qte_produite,
+    qte_rebut,
+    trim(statut)                  as statut,
+    quality_score,
+    validated_at
+from realisations_ranked
+where rn = 1
+  );
+[0m10:42:43.267978 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:42:43.269787 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:42:43.271131 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m10:42:43.367824 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.129 seconds
+[0m10:42:43.390963 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.stg_arrets"
+[0m10:42:43.392306 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.124 seconds
+[0m10:42:43.393386 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.124 seconds
+[0m10:42:43.394482 [debug] [Thread-1 (]: On model.valisoa_gold.stg_arrets: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_arrets"} */
+alter table "airflow"."gold_staging"."stg_arrets" rename to "stg_arrets__dbt_backup"
+[0m10:42:43.395609 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.125 seconds
+[0m10:42:43.402769 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.stg_cadences"
+[0m10:42:43.410114 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.stg_rebuts"
+[0m10:42:43.421093 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.stg_realisations"
+[0m10:42:43.422765 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.011 seconds
+[0m10:42:43.423864 [debug] [Thread-2 (]: On model.valisoa_gold.stg_cadences: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_cadences"} */
+alter table "airflow"."gold_staging"."stg_cadences" rename to "stg_cadences__dbt_backup"
+[0m10:42:43.424965 [debug] [Thread-4 (]: On model.valisoa_gold.stg_rebuts: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_rebuts"} */
+alter table "airflow"."gold_staging"."stg_rebuts" rename to "stg_rebuts__dbt_backup"
+[0m10:42:43.426114 [debug] [Thread-3 (]: On model.valisoa_gold.stg_realisations: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_realisations"} */
+alter table "airflow"."gold_staging"."stg_realisations" rename to "stg_realisations__dbt_backup"
+[0m10:42:43.434947 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.stg_arrets"
+[0m10:42:43.438001 [debug] [Thread-1 (]: On model.valisoa_gold.stg_arrets: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_arrets"} */
+alter table "airflow"."gold_staging"."stg_arrets__dbt_tmp" rename to "stg_arrets"
+[0m10:42:43.440660 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m10:42:43.442040 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.005 seconds
+[0m10:42:43.443128 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.006 seconds
+[0m10:42:43.449388 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.010 seconds
+[0m10:42:43.453286 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.stg_realisations"
+[0m10:42:43.461477 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.stg_cadences"
+[0m10:42:43.469019 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.stg_rebuts"
+[0m10:42:43.508082 [debug] [Thread-1 (]: On model.valisoa_gold.stg_arrets: COMMIT
+[0m10:42:43.509364 [debug] [Thread-3 (]: On model.valisoa_gold.stg_realisations: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_realisations"} */
+alter table "airflow"."gold_staging"."stg_realisations__dbt_tmp" rename to "stg_realisations"
+[0m10:42:43.510363 [debug] [Thread-2 (]: On model.valisoa_gold.stg_cadences: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_cadences"} */
+alter table "airflow"."gold_staging"."stg_cadences__dbt_tmp" rename to "stg_cadences"
+[0m10:42:43.512379 [debug] [Thread-4 (]: On model.valisoa_gold.stg_rebuts: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_rebuts"} */
+alter table "airflow"."gold_staging"."stg_rebuts__dbt_tmp" rename to "stg_rebuts"
+[0m10:42:43.513378 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.stg_arrets"
+[0m10:42:43.516049 [debug] [Thread-1 (]: On model.valisoa_gold.stg_arrets: COMMIT
+[0m10:42:43.518316 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m10:42:43.519961 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m10:42:43.521099 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.006 seconds
+[0m10:42:43.525577 [debug] [Thread-4 (]: On model.valisoa_gold.stg_rebuts: COMMIT
+[0m10:42:43.528873 [debug] [Thread-2 (]: On model.valisoa_gold.stg_cadences: COMMIT
+[0m10:42:43.533496 [debug] [Thread-3 (]: On model.valisoa_gold.stg_realisations: COMMIT
+[0m10:42:43.534628 [debug] [Thread-1 (]: SQL status: COMMIT in 0.017 seconds
+[0m10:42:43.535956 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.stg_rebuts"
+[0m10:42:43.537101 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.stg_cadences"
+[0m10:42:43.538226 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.stg_realisations"
+[0m10:42:43.554093 [debug] [Thread-1 (]: Applying DROP to: "airflow"."gold_staging"."stg_arrets__dbt_backup"
+[0m10:42:43.555107 [debug] [Thread-4 (]: On model.valisoa_gold.stg_rebuts: COMMIT
+[0m10:42:43.557007 [debug] [Thread-2 (]: On model.valisoa_gold.stg_cadences: COMMIT
+[0m10:42:43.557559 [debug] [Thread-3 (]: On model.valisoa_gold.stg_realisations: COMMIT
+[0m10:42:43.570885 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.stg_arrets"
+[0m10:42:43.573228 [debug] [Thread-1 (]: On model.valisoa_gold.stg_arrets: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_arrets"} */
+drop view if exists "airflow"."gold_staging"."stg_arrets__dbt_backup" cascade
+[0m10:42:43.579297 [debug] [Thread-4 (]: SQL status: COMMIT in 0.007 seconds
+[0m10:42:43.586643 [debug] [Thread-4 (]: Applying DROP to: "airflow"."gold_staging"."stg_rebuts__dbt_backup"
+[0m10:42:43.587712 [debug] [Thread-2 (]: SQL status: COMMIT in 0.015 seconds
+[0m10:42:43.588825 [debug] [Thread-3 (]: SQL status: COMMIT in 0.016 seconds
+[0m10:42:43.589916 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.015 seconds
+[0m10:42:43.591294 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.stg_rebuts"
+[0m10:42:43.599913 [debug] [Thread-2 (]: Applying DROP to: "airflow"."gold_staging"."stg_cadences__dbt_backup"
+[0m10:42:43.604961 [debug] [Thread-3 (]: Applying DROP to: "airflow"."gold_staging"."stg_realisations__dbt_backup"
+[0m10:42:43.610962 [debug] [Thread-1 (]: On model.valisoa_gold.stg_arrets: Close
+[0m10:42:43.611967 [debug] [Thread-4 (]: On model.valisoa_gold.stg_rebuts: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_rebuts"} */
+drop view if exists "airflow"."gold_staging"."stg_rebuts__dbt_backup" cascade
+[0m10:42:43.613963 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.stg_cadences"
+[0m10:42:43.616613 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.stg_realisations"
+[0m10:42:43.618063 [debug] [Thread-2 (]: On model.valisoa_gold.stg_cadences: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_cadences"} */
+drop view if exists "airflow"."gold_staging"."stg_cadences__dbt_backup" cascade
+[0m10:42:43.624258 [debug] [Thread-3 (]: On model.valisoa_gold.stg_realisations: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.stg_realisations"} */
+drop view if exists "airflow"."gold_staging"."stg_realisations__dbt_backup" cascade
+[0m10:42:43.627128 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.009 seconds
+[0m10:42:43.631697 [debug] [Thread-4 (]: On model.valisoa_gold.stg_rebuts: Close
+[0m10:42:43.634031 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001396807A740>]}
+[0m10:42:43.636809 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013967B78D00>]}
+[0m10:42:43.639774 [info ] [Thread-1 (]: 1 of 13 OK created sql view model gold_staging.stg_arrets ...................... [[32mCREATE VIEW[0m in 0.66s]
+[0m10:42:43.643265 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.017 seconds
+[0m10:42:43.642258 [info ] [Thread-4 (]: 4 of 13 OK created sql view model gold_staging.stg_rebuts ...................... [[32mCREATE VIEW[0m in 0.66s]
+[0m10:42:43.648382 [debug] [Thread-1 (]: Finished running node model.valisoa_gold.stg_arrets
+[0m10:42:43.650637 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.021 seconds
+[0m10:42:43.654873 [debug] [Thread-2 (]: On model.valisoa_gold.stg_cadences: Close
+[0m10:42:43.657107 [debug] [Thread-4 (]: Finished running node model.valisoa_gold.stg_rebuts
+[0m10:42:43.659256 [debug] [Thread-1 (]: Began running node model.valisoa_gold.dim_motif_arret
+[0m10:42:43.670560 [debug] [Thread-3 (]: On model.valisoa_gold.stg_realisations: Close
+[0m10:42:43.680037 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001396805E860>]}
+[0m10:42:43.685911 [info ] [Thread-1 (]: 5 of 13 START sql table model gold.dim_motif_arret ............................. [RUN]
+[0m10:42:43.689360 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001396807A6E0>]}
+[0m10:42:43.694214 [info ] [Thread-2 (]: 2 of 13 OK created sql view model gold_staging.stg_cadences .................... [[32mCREATE VIEW[0m in 0.72s]
+[0m10:42:43.697507 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.valisoa_gold.stg_arrets, now model.valisoa_gold.dim_motif_arret)
+[0m10:42:43.701028 [info ] [Thread-3 (]: 3 of 13 OK created sql view model gold_staging.stg_realisations ................ [[32mCREATE VIEW[0m in 0.71s]
+[0m10:42:43.703328 [debug] [Thread-2 (]: Finished running node model.valisoa_gold.stg_cadences
+[0m10:42:43.703880 [debug] [Thread-1 (]: Began compiling node model.valisoa_gold.dim_motif_arret
+[0m10:42:43.709583 [debug] [Thread-3 (]: Finished running node model.valisoa_gold.stg_realisations
+[0m10:42:43.728624 [debug] [Thread-1 (]: Writing injected SQL for node "model.valisoa_gold.dim_motif_arret"
+[0m10:42:43.733998 [debug] [Thread-4 (]: Began running node model.valisoa_gold.dim_machine
+[0m10:42:43.735387 [debug] [Thread-2 (]: Began running node model.valisoa_gold.dim_produit
+[0m10:42:43.736816 [debug] [Thread-3 (]: Began running node model.valisoa_gold.dim_temps
+[0m10:42:43.740323 [info ] [Thread-4 (]: 6 of 13 START sql table model gold.dim_machine ................................. [RUN]
+[0m10:42:43.744782 [debug] [Thread-1 (]: Began executing node model.valisoa_gold.dim_motif_arret
+[0m10:42:43.743140 [info ] [Thread-2 (]: 7 of 13 START sql table model gold.dim_produit ................................. [RUN]
+[0m10:42:43.746493 [info ] [Thread-3 (]: 8 of 13 START sql table model gold.dim_temps ................................... [RUN]
+[0m10:42:43.750948 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.valisoa_gold.stg_rebuts, now model.valisoa_gold.dim_machine)
+[0m10:42:43.792610 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.valisoa_gold.stg_cadences, now model.valisoa_gold.dim_produit)
+[0m10:42:43.818392 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.valisoa_gold.stg_realisations, now model.valisoa_gold.dim_temps)
+[0m10:42:43.830133 [debug] [Thread-1 (]: Writing runtime sql for node "model.valisoa_gold.dim_motif_arret"
+[0m10:42:43.832166 [debug] [Thread-4 (]: Began compiling node model.valisoa_gold.dim_machine
+[0m10:42:43.833834 [debug] [Thread-2 (]: Began compiling node model.valisoa_gold.dim_produit
+[0m10:42:43.835009 [debug] [Thread-3 (]: Began compiling node model.valisoa_gold.dim_temps
+[0m10:42:43.843818 [debug] [Thread-4 (]: Writing injected SQL for node "model.valisoa_gold.dim_machine"
+[0m10:42:43.851712 [debug] [Thread-2 (]: Writing injected SQL for node "model.valisoa_gold.dim_produit"
+[0m10:42:43.861723 [debug] [Thread-3 (]: Writing injected SQL for node "model.valisoa_gold.dim_temps"
+[0m10:42:43.862726 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.dim_motif_arret"
+[0m10:42:43.865298 [debug] [Thread-1 (]: On model.valisoa_gold.dim_motif_arret: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_motif_arret"} */
+
+  
+    
+
+  create  table "airflow"."gold"."dim_motif_arret__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Une ligne par combinaison distincte (type_arret, motif).
+-- Le flag "planifié" est déduit par mot-clé sur le type_arret — à
+-- affiner avec la nomenclature métier réelle si elle diverge.
+
+with motifs as (
+    select distinct
+        coalesce(type_arret, 'NON_RENSEIGNE') as type_arret,
+        coalesce(motif, 'NON_RENSEIGNE')       as motif
+    from "airflow"."gold_staging"."stg_arrets"
+)
+
+select
+    
+    md5(
+        
+            coalesce(cast(type_arret as text), '') || '||' || 
+            coalesce(cast(motif as text), '')
+    )
+   as motif_key,
+    type_arret,
+    motif,
+    case
+        when lower(type_arret) like '%planifi%'
+          or lower(type_arret) like '%maintenance preventive%'
+          or lower(type_arret) like '%changement%'
+            then true
+        else false
+    end as est_planifie
+from motifs
+  );
+  
+[0m10:42:43.866322 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m10:42:43.868381 [debug] [Thread-2 (]: Began executing node model.valisoa_gold.dim_produit
+[0m10:42:43.869551 [debug] [Thread-4 (]: Began executing node model.valisoa_gold.dim_machine
+[0m10:42:43.880554 [debug] [Thread-3 (]: Began executing node model.valisoa_gold.dim_temps
+[0m10:42:43.883463 [debug] [Thread-2 (]: Writing runtime sql for node "model.valisoa_gold.dim_produit"
+[0m10:42:43.892717 [debug] [Thread-4 (]: Writing runtime sql for node "model.valisoa_gold.dim_machine"
+[0m10:42:43.906429 [debug] [Thread-3 (]: Writing runtime sql for node "model.valisoa_gold.dim_temps"
+[0m10:42:43.909433 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.dim_produit"
+[0m10:42:43.910424 [debug] [Thread-2 (]: On model.valisoa_gold.dim_produit: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_produit"} */
+
+  
+    
+
+  create  table "airflow"."gold"."dim_produit__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Le staging expose "produit" au format : "[CODE] - Libellé produit"
+-- (ex: "[VR011] - IMPEC Gel Hydro-alcoolique vrac").
+-- On extrait le code entre crochets comme clé métier stable, et on
+-- nettoie le libellé en retirant le préfixe "[CODE] - ".
+-- famille/gamme : toujours absents du staging actuel -> NULL, à
+-- enrichir plus tard via un référentiel produit dédié si besoin.
+
+with produits_raw as (
+    select distinct produit
+    from "airflow"."gold_staging"."stg_realisations"
+    where produit is not null and trim(produit) != ''
+),
+
+produits_parsed as (
+    select
+        produit                                                as produit_brut,
+        trim(substring(produit from '\[([^\]]+)\]'))            as code,
+        trim(regexp_replace(produit, '^\[[^\]]+\]\s*-\s*', '')) as libelle
+    from produits_raw
+)
+
+select
+    
+    md5(
+        
+            coalesce(cast(code as text), '')
+    )
+   as produit_key,
+    code,
+    libelle,
+    cast(null as text) as famille,
+    cast(null as text) as gamme
+from produits_parsed
+where code is not null   -- exclut les libellés qui ne suivent pas le format attendu
+  );
+  
+[0m10:42:43.911425 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m10:42:43.912450 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.dim_machine"
+[0m10:42:43.914445 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.dim_temps"
+[0m10:42:43.918091 [debug] [Thread-4 (]: On model.valisoa_gold.dim_machine: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_machine"} */
+
+  
+    
+
+  create  table "airflow"."gold"."dim_machine__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Une ligne par machine distincte, croisée depuis toutes les tables
+-- staging qui référencent une machine (réalisations + arrêts).
+-- capacite/ligne : non présents dans le staging actuel -> NULL,
+-- à enrichir plus tard via un référentiel machine dédié si besoin.
+
+with machines as (
+    select distinct machine, atelier
+    from "airflow"."gold_staging"."stg_realisations"
+    where machine is not null and trim(machine) != ''
+
+    union
+
+    select distinct machine, cast(null as text) as atelier
+    from "airflow"."gold_staging"."stg_arrets"
+    where machine is not null and trim(machine) != ''
+),
+
+deduped as (
+    select
+        machine,
+        max(atelier) as atelier   -- on garde l'atelier connu s'il existe
+    from machines
+    group by machine
+)
+
+select
+    
+    md5(
+        
+            coalesce(cast(machine as text), '')
+    )
+              as machine_key,
+    machine,
+    atelier,
+    cast(null as text) as ligne,
+    cast(null as numeric) as capacite
+from deduped
+  );
+  
+[0m10:42:43.920908 [debug] [Thread-3 (]: On model.valisoa_gold.dim_temps: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_temps"} */
+
+  
+    
+
+  create  table "airflow"."gold"."dim_temps__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Calendrier généré dynamiquement entre la date min et max observées
+-- dans les faits (réalisations + arrêts), avec une marge de 30 jours
+-- de part et d'autre pour anticiper les prochains chargements.
+
+with bounds as (
+    select
+        min(date_debut) as min_date,
+        max(coalesce(date_fin, date_debut)) as max_date
+    from (
+        select date_debut, date_fin from "airflow"."gold_staging"."stg_realisations"
+        union all
+        select date_debut, date_fin from "airflow"."gold_staging"."stg_arrets"
+    ) all_dates
+),
+
+spine as (
+    select
+        generate_series(
+            (select date_trunc('day', min_date) - interval '30 day' from bounds),
+            (select date_trunc('day', max_date) + interval '30 day' from bounds),
+            interval '1 day'
+        )::date as date_jour
+)
+
+select
+    to_char(date_jour, 'YYYYMMDD')::int   as temps_key,
+    date_jour                              as date,
+    extract(isoyear from date_jour)::int   as annee,
+    extract(month from date_jour)::int     as mois,
+    to_char(date_jour, 'Month')            as nom_mois,
+    extract(week from date_jour)::int      as semaine,
+    extract(isodow from date_jour)::int    as jour_semaine_num,
+    to_char(date_jour, 'Day')              as jour_semaine_nom,
+    extract(isodow from date_jour) in (6, 7) as est_weekend
+from spine
+  );
+  
+[0m10:42:43.922672 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m10:42:43.924397 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m10:42:44.033658 [debug] [Thread-1 (]: SQL status: SELECT 27 in 0.167 seconds
+[0m10:42:44.052508 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.dim_motif_arret"
+[0m10:42:44.054737 [debug] [Thread-1 (]: On model.valisoa_gold.dim_motif_arret: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_motif_arret"} */
+alter table "airflow"."gold"."dim_motif_arret" rename to "dim_motif_arret__dbt_backup"
+[0m10:42:44.059475 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m10:42:44.070493 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.dim_motif_arret"
+[0m10:42:44.070493 [debug] [Thread-1 (]: On model.valisoa_gold.dim_motif_arret: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_motif_arret"} */
+alter table "airflow"."gold"."dim_motif_arret__dbt_tmp" rename to "dim_motif_arret"
+[0m10:42:44.076170 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m10:42:44.081966 [debug] [Thread-1 (]: On model.valisoa_gold.dim_motif_arret: COMMIT
+[0m10:42:44.083654 [debug] [Thread-3 (]: SQL status: SELECT 79 in 0.159 seconds
+[0m10:42:44.085519 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.dim_motif_arret"
+[0m10:42:44.094511 [debug] [Thread-2 (]: SQL status: SELECT 89 in 0.182 seconds
+[0m10:42:44.095890 [debug] [Thread-4 (]: SQL status: SELECT 37 in 0.173 seconds
+[0m10:42:44.099170 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.dim_temps"
+[0m10:42:44.100690 [debug] [Thread-1 (]: On model.valisoa_gold.dim_motif_arret: COMMIT
+[0m10:42:44.109271 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.dim_produit"
+[0m10:42:44.116839 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.dim_machine"
+[0m10:42:44.117981 [debug] [Thread-3 (]: On model.valisoa_gold.dim_temps: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_temps"} */
+alter table "airflow"."gold"."dim_temps" rename to "dim_temps__dbt_backup"
+[0m10:42:44.119811 [debug] [Thread-2 (]: On model.valisoa_gold.dim_produit: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_produit"} */
+alter table "airflow"."gold"."dim_produit" rename to "dim_produit__dbt_backup"
+[0m10:42:44.120642 [debug] [Thread-4 (]: On model.valisoa_gold.dim_machine: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_machine"} */
+alter table "airflow"."gold"."dim_machine" rename to "dim_machine__dbt_backup"
+[0m10:42:44.125502 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m10:42:44.127666 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.005 seconds
+[0m10:42:44.128783 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.006 seconds
+[0m10:42:44.129876 [debug] [Thread-1 (]: SQL status: COMMIT in 0.010 seconds
+[0m10:42:44.137703 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.dim_produit"
+[0m10:42:44.144259 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.dim_machine"
+[0m10:42:44.153328 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.dim_temps"
+[0m10:42:44.160399 [debug] [Thread-1 (]: Applying DROP to: "airflow"."gold"."dim_motif_arret__dbt_backup"
+[0m10:42:44.161397 [debug] [Thread-2 (]: On model.valisoa_gold.dim_produit: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_produit"} */
+alter table "airflow"."gold"."dim_produit__dbt_tmp" rename to "dim_produit"
+[0m10:42:44.162397 [debug] [Thread-4 (]: On model.valisoa_gold.dim_machine: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_machine"} */
+alter table "airflow"."gold"."dim_machine__dbt_tmp" rename to "dim_machine"
+[0m10:42:44.163708 [debug] [Thread-3 (]: On model.valisoa_gold.dim_temps: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_temps"} */
+alter table "airflow"."gold"."dim_temps__dbt_tmp" rename to "dim_temps"
+[0m10:42:44.170801 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.dim_motif_arret"
+[0m10:42:44.172603 [debug] [Thread-1 (]: On model.valisoa_gold.dim_motif_arret: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_motif_arret"} */
+drop table if exists "airflow"."gold"."dim_motif_arret__dbt_backup" cascade
+[0m10:42:44.176550 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m10:42:44.178928 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.006 seconds
+[0m10:42:44.181391 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.009 seconds
+[0m10:42:44.186498 [debug] [Thread-4 (]: On model.valisoa_gold.dim_machine: COMMIT
+[0m10:42:44.189199 [debug] [Thread-3 (]: On model.valisoa_gold.dim_temps: COMMIT
+[0m10:42:44.200375 [debug] [Thread-2 (]: On model.valisoa_gold.dim_produit: COMMIT
+[0m10:42:44.201777 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.dim_machine"
+[0m10:42:44.204251 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.030 seconds
+[0m10:42:44.205928 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.dim_temps"
+[0m10:42:44.207696 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.dim_produit"
+[0m10:42:44.210015 [debug] [Thread-4 (]: On model.valisoa_gold.dim_machine: COMMIT
+[0m10:42:44.214517 [debug] [Thread-1 (]: On model.valisoa_gold.dim_motif_arret: Close
+[0m10:42:44.216536 [debug] [Thread-3 (]: On model.valisoa_gold.dim_temps: COMMIT
+[0m10:42:44.218532 [debug] [Thread-2 (]: On model.valisoa_gold.dim_produit: COMMIT
+[0m10:42:44.220976 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013967FF4880>]}
+[0m10:42:44.224478 [info ] [Thread-1 (]: 5 of 13 OK created sql table model gold.dim_motif_arret ........................ [[32mSELECT 27[0m in 0.52s]
+[0m10:42:44.227804 [debug] [Thread-1 (]: Finished running node model.valisoa_gold.dim_motif_arret
+[0m10:42:44.229885 [debug] [Thread-4 (]: SQL status: COMMIT in 0.010 seconds
+[0m10:42:44.231411 [debug] [Thread-3 (]: SQL status: COMMIT in 0.011 seconds
+[0m10:42:44.234084 [debug] [Thread-1 (]: Began running node model.valisoa_gold.int_production_cadence
+[0m10:42:44.238343 [debug] [Thread-2 (]: SQL status: COMMIT in 0.014 seconds
+[0m10:42:44.368253 [debug] [Thread-4 (]: Applying DROP to: "airflow"."gold"."dim_machine__dbt_backup"
+[0m10:42:44.374265 [debug] [Thread-3 (]: Applying DROP to: "airflow"."gold"."dim_temps__dbt_backup"
+[0m10:42:44.382305 [debug] [Thread-2 (]: Applying DROP to: "airflow"."gold"."dim_produit__dbt_backup"
+[0m10:42:44.375275 [info ] [Thread-1 (]: 9 of 13 START sql view model gold_intermediate.int_production_cadence .......... [RUN]
+[0m10:42:44.385243 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.dim_machine"
+[0m10:42:44.387815 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.dim_temps"
+[0m10:42:44.390750 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.dim_produit"
+[0m10:42:44.393136 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.valisoa_gold.dim_motif_arret, now model.valisoa_gold.int_production_cadence)
+[0m10:42:44.404767 [debug] [Thread-4 (]: On model.valisoa_gold.dim_machine: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_machine"} */
+drop table if exists "airflow"."gold"."dim_machine__dbt_backup" cascade
+[0m10:42:44.408718 [debug] [Thread-3 (]: On model.valisoa_gold.dim_temps: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_temps"} */
+drop table if exists "airflow"."gold"."dim_temps__dbt_backup" cascade
+[0m10:42:44.410723 [debug] [Thread-2 (]: On model.valisoa_gold.dim_produit: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.dim_produit"} */
+drop table if exists "airflow"."gold"."dim_produit__dbt_backup" cascade
+[0m10:42:44.412719 [debug] [Thread-1 (]: Began compiling node model.valisoa_gold.int_production_cadence
+[0m10:42:44.428713 [debug] [Thread-1 (]: Writing injected SQL for node "model.valisoa_gold.int_production_cadence"
+[0m10:42:44.434133 [debug] [Thread-1 (]: Began executing node model.valisoa_gold.int_production_cadence
+[0m10:42:44.461417 [debug] [Thread-1 (]: Writing runtime sql for node "model.valisoa_gold.int_production_cadence"
+[0m10:42:44.466918 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.int_production_cadence"
+[0m10:42:44.470443 [debug] [Thread-4 (]: SQL status: DROP TABLE in 0.056 seconds
+[0m10:42:44.472364 [debug] [Thread-1 (]: On model.valisoa_gold.int_production_cadence: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.int_production_cadence"} */
+
+  create view "airflow"."gold_intermediate"."int_production_cadence__dbt_tmp"
+    
+    
+  as (
+    -- Combine une ligne de réalisation avec ses indicateurs TRS correspondants
+-- (grain : un OF). Si plusieurs lignes de cadence existent pour un même
+-- OF (relevés successifs), on prend la plus récente (validated_at max).
+--
+-- NOTE : "produit_code" est extrait ici pour permettre la jointure avec
+-- dim_produit (qui utilise le code comme clé stable) dans fact_production,
+-- sans dupliquer cette logique de parsing dans plusieurs modèles.
+
+with cadence_ranked as (
+    select
+        *,
+        row_number() over (
+            partition by code_of
+            order by validated_at desc
+        ) as rn
+    from "airflow"."gold_staging"."stg_cadences"
+),
+
+cadence_latest as (
+    select * from cadence_ranked where rn = 1
+)
+
+select
+    r.code_of,
+    r.atelier,
+    r.machine,
+    r.produit,
+    trim(substring(r.produit from '\[([^\]]+)\]'))  as produit_code,
+    r.date_debut,
+    r.date_fin,
+    r.qte_prevue,
+    r.qte_produite,
+    r.qte_rebut,
+    r.statut,
+    c.trs_pct,
+    c.disponibilite_pct,
+    c.performance_pct,
+    c.qualite_pct
+from "airflow"."gold_staging"."stg_realisations" r
+left join cadence_latest c
+    on c.code_of = r.code_of
+  );
+[0m10:42:44.475124 [debug] [Thread-3 (]: SQL status: DROP TABLE in 0.060 seconds
+[0m10:42:44.479674 [debug] [Thread-4 (]: On model.valisoa_gold.dim_machine: Close
+[0m10:42:44.480772 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.066 seconds
+[0m10:42:44.483084 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m10:42:44.487973 [debug] [Thread-3 (]: On model.valisoa_gold.dim_temps: Close
+[0m10:42:44.493376 [debug] [Thread-2 (]: On model.valisoa_gold.dim_produit: Close
+[0m10:42:44.494895 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013963E46290>]}
+[0m10:42:44.500094 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000139681C6920>]}
+[0m10:42:44.504143 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000139681A49A0>]}
+[0m10:42:44.507386 [info ] [Thread-4 (]: 6 of 13 OK created sql table model gold.dim_machine ............................ [[32mSELECT 37[0m in 0.75s]
+[0m10:42:44.517596 [debug] [Thread-4 (]: Finished running node model.valisoa_gold.dim_machine
+[0m10:42:44.510999 [info ] [Thread-3 (]: 8 of 13 OK created sql table model gold.dim_temps .............................. [[32mSELECT 79[0m in 0.68s]
+[0m10:42:44.514250 [info ] [Thread-2 (]: 7 of 13 OK created sql table model gold.dim_produit ............................ [[32mSELECT 89[0m in 0.71s]
+[0m10:42:44.524514 [debug] [Thread-3 (]: Finished running node model.valisoa_gold.dim_temps
+[0m10:42:44.528676 [debug] [Thread-2 (]: Finished running node model.valisoa_gold.dim_produit
+[0m10:42:44.539424 [debug] [Thread-4 (]: Began running node model.valisoa_gold.fact_arrets
+[0m10:42:44.544987 [info ] [Thread-4 (]: 10 of 13 START sql incremental model gold.fact_arrets .......................... [RUN]
+[0m10:42:44.558261 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.valisoa_gold.dim_machine, now model.valisoa_gold.fact_arrets)
+[0m10:42:44.560677 [debug] [Thread-4 (]: Began compiling node model.valisoa_gold.fact_arrets
+[0m10:42:44.611441 [debug] [Thread-4 (]: Writing injected SQL for node "model.valisoa_gold.fact_arrets"
+[0m10:42:44.615675 [debug] [Thread-4 (]: Began executing node model.valisoa_gold.fact_arrets
+[0m10:42:44.710536 [debug] [Thread-4 (]: Writing runtime sql for node "model.valisoa_gold.fact_arrets"
+[0m10:42:44.712210 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.229 seconds
+[0m10:42:44.720217 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.int_production_cadence"
+[0m10:42:44.722477 [debug] [Thread-1 (]: On model.valisoa_gold.int_production_cadence: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.int_production_cadence"} */
+alter table "airflow"."gold_intermediate"."int_production_cadence__dbt_tmp" rename to "int_production_cadence"
+[0m10:42:44.724409 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.fact_arrets"
+[0m10:42:44.725855 [debug] [Thread-4 (]: On model.valisoa_gold.fact_arrets: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_arrets"} */
+
+      
+  
+    
+
+  create  table "airflow"."gold"."fact_arrets__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+select
+    
+    md5(
+        
+            coalesce(cast(sa.source_id as text), '')
+    )
+         as arret_key,
+    sa.code_of,
+    dm.machine_key,
+    dma.motif_key,
+    dt.temps_key,
+    sa.date_debut,
+    sa.date_fin,
+    sa.duree_min
+from "airflow"."gold_staging"."stg_arrets" sa
+left join "airflow"."gold"."dim_machine" dm
+    on dm.machine = sa.machine
+left join "airflow"."gold"."dim_motif_arret" dma
+    on dma.type_arret = coalesce(sa.type_arret, 'NON_RENSEIGNE')
+   and dma.motif       = coalesce(sa.motif, 'NON_RENSEIGNE')
+left join "airflow"."gold"."dim_temps" dt
+    on dt.date = date_trunc('day', sa.date_debut)::date
+
+
+  );
+  
+  
+[0m10:42:44.727113 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m10:42:44.727678 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m10:42:44.737730 [debug] [Thread-1 (]: On model.valisoa_gold.int_production_cadence: COMMIT
+[0m10:42:44.742880 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.int_production_cadence"
+[0m10:42:44.745501 [debug] [Thread-1 (]: On model.valisoa_gold.int_production_cadence: COMMIT
+[0m10:42:44.755627 [debug] [Thread-1 (]: SQL status: COMMIT in 0.008 seconds
+[0m10:42:44.771294 [debug] [Thread-1 (]: Applying DROP to: "airflow"."gold_intermediate"."int_production_cadence__dbt_backup"
+[0m10:42:44.772544 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.int_production_cadence"
+[0m10:42:44.774053 [debug] [Thread-1 (]: On model.valisoa_gold.int_production_cadence: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.int_production_cadence"} */
+drop view if exists "airflow"."gold_intermediate"."int_production_cadence__dbt_backup" cascade
+[0m10:42:44.778464 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.002 seconds
+[0m10:42:44.782459 [debug] [Thread-1 (]: On model.valisoa_gold.int_production_cadence: Close
+[0m10:42:44.784623 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000139663A95A0>]}
+[0m10:42:44.787041 [info ] [Thread-1 (]: 9 of 13 OK created sql view model gold_intermediate.int_production_cadence ..... [[32mCREATE VIEW[0m in 0.39s]
+[0m10:42:44.789246 [debug] [Thread-1 (]: Finished running node model.valisoa_gold.int_production_cadence
+[0m10:42:44.791773 [debug] [Thread-2 (]: Began running node model.valisoa_gold.fact_production
+[0m10:42:44.793518 [debug] [Thread-3 (]: Began running node model.valisoa_gold.fact_rebuts
+[0m10:42:44.796295 [info ] [Thread-2 (]: 11 of 13 START sql incremental model gold.fact_production ...................... [RUN]
+[0m10:42:44.802408 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.valisoa_gold.dim_produit, now model.valisoa_gold.fact_production)
+[0m10:42:44.798923 [info ] [Thread-3 (]: 12 of 13 START sql incremental model gold.fact_rebuts .......................... [RUN]
+[0m10:42:44.806298 [debug] [Thread-2 (]: Began compiling node model.valisoa_gold.fact_production
+[0m10:42:44.809750 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.valisoa_gold.dim_temps, now model.valisoa_gold.fact_rebuts)
+[0m10:42:44.842936 [debug] [Thread-2 (]: Writing injected SQL for node "model.valisoa_gold.fact_production"
+[0m10:42:44.851362 [debug] [Thread-3 (]: Began compiling node model.valisoa_gold.fact_rebuts
+[0m10:42:44.875728 [debug] [Thread-3 (]: Writing injected SQL for node "model.valisoa_gold.fact_rebuts"
+[0m10:42:44.879167 [debug] [Thread-2 (]: Began executing node model.valisoa_gold.fact_production
+[0m10:42:44.895384 [debug] [Thread-2 (]: Writing runtime sql for node "model.valisoa_gold.fact_production"
+[0m10:42:44.897399 [debug] [Thread-3 (]: Began executing node model.valisoa_gold.fact_rebuts
+[0m10:42:44.921012 [debug] [Thread-3 (]: Writing runtime sql for node "model.valisoa_gold.fact_rebuts"
+[0m10:42:44.924153 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.fact_production"
+[0m10:42:44.926150 [debug] [Thread-2 (]: On model.valisoa_gold.fact_production: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_production"} */
+
+      
+  
+    
+
+  create  table "airflow"."gold"."fact_production__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+-- Grain : un OF (code_of). Jointe aux dimensions machine, produit, temps.
+-- Jointure produit sur le CODE (dp.code), pas le libellé, car dim_produit
+-- utilise désormais le code comme clé métier stable.
+
+select
+    
+    md5(
+        
+            coalesce(cast(ipc.code_of as text), '')
+    )
+          as production_key,
+    ipc.code_of,
+    dm.machine_key,
+    dp.produit_key,
+    dt.temps_key,
+    ipc.date_debut,
+    ipc.date_fin,
+    ipc.qte_prevue,
+    ipc.qte_produite,
+    ipc.qte_rebut,
+    ipc.statut,
+    ipc.trs_pct,
+    ipc.disponibilite_pct,
+    ipc.performance_pct,
+    ipc.qualite_pct
+from "airflow"."gold_intermediate"."int_production_cadence" ipc
+left join "airflow"."gold"."dim_machine" dm
+    on dm.machine = ipc.machine
+left join "airflow"."gold"."dim_produit" dp
+    on dp.code = ipc.produit_code
+left join "airflow"."gold"."dim_temps" dt
+    on dt.date = date_trunc('day', ipc.date_debut)::date
+
+
+  );
+  
+  
+[0m10:42:44.928673 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m10:42:44.931350 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.fact_rebuts"
+[0m10:42:44.932348 [debug] [Thread-3 (]: On model.valisoa_gold.fact_rebuts: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_rebuts"} */
+
+      
+  
+    
+
+  create  table "airflow"."gold"."fact_rebuts__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+-- Grain : une saisie de rebut. Jointe à machine/produit via code_of
+-- (résolu depuis int_production_cadence, qui porte déjà machine et
+-- produit_code pour l'OF correspondant), et à temps via date_saisie.
+
+select
+    
+    md5(
+        
+            coalesce(cast(sr.source_id as text), '')
+    )
+         as rebut_key,
+    sr.code_of,
+    dm.machine_key,
+    dp.produit_key,
+    sr.composant_cible,
+    sr.motif,
+    dt.temps_key,
+    sr.quantite,
+    sr.date_saisie
+from "airflow"."gold_staging"."stg_rebuts" sr
+left join "airflow"."gold_intermediate"."int_production_cadence" ipc
+    on ipc.code_of = sr.code_of
+left join "airflow"."gold"."dim_machine" dm
+    on dm.machine = ipc.machine
+left join "airflow"."gold"."dim_produit" dp
+    on dp.code = ipc.produit_code
+left join "airflow"."gold"."dim_temps" dt
+    on dt.date = date_trunc('day', sr.date_saisie)::date
+
+
+  );
+  
+  
+[0m10:42:44.934991 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m10:42:45.171939 [debug] [Thread-4 (]: SQL status: SELECT 2685 in 0.444 seconds
+[0m10:42:45.186058 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.fact_arrets"
+[0m10:42:45.187999 [debug] [Thread-4 (]: On model.valisoa_gold.fact_arrets: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_arrets"} */
+alter table "airflow"."gold"."fact_arrets" rename to "fact_arrets__dbt_backup"
+[0m10:42:45.193479 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m10:42:45.207716 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.fact_arrets"
+[0m10:42:45.209922 [debug] [Thread-4 (]: On model.valisoa_gold.fact_arrets: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_arrets"} */
+alter table "airflow"."gold"."fact_arrets__dbt_tmp" rename to "fact_arrets"
+[0m10:42:45.220666 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.008 seconds
+[0m10:42:45.226679 [debug] [Thread-4 (]: On model.valisoa_gold.fact_arrets: COMMIT
+[0m10:42:45.229298 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.fact_arrets"
+[0m10:42:45.232208 [debug] [Thread-4 (]: On model.valisoa_gold.fact_arrets: COMMIT
+[0m10:42:45.261125 [debug] [Thread-4 (]: SQL status: COMMIT in 0.027 seconds
+[0m10:42:45.272237 [debug] [Thread-4 (]: Applying DROP to: "airflow"."gold"."fact_arrets__dbt_backup"
+[0m10:42:45.275241 [debug] [Thread-4 (]: Using postgres connection "model.valisoa_gold.fact_arrets"
+[0m10:42:45.277272 [debug] [Thread-4 (]: On model.valisoa_gold.fact_arrets: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_arrets"} */
+drop table if exists "airflow"."gold"."fact_arrets__dbt_backup" cascade
+[0m10:42:45.343896 [debug] [Thread-4 (]: SQL status: DROP TABLE in 0.064 seconds
+[0m10:42:45.352298 [debug] [Thread-4 (]: On model.valisoa_gold.fact_arrets: Close
+[0m10:42:45.356492 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013968117C10>]}
+[0m10:42:45.360293 [info ] [Thread-4 (]: 10 of 13 OK created sql incremental model gold.fact_arrets ..................... [[32mSELECT 2685[0m in 0.80s]
+[0m10:42:45.366592 [debug] [Thread-4 (]: Finished running node model.valisoa_gold.fact_arrets
+[0m10:42:45.375075 [debug] [Thread-2 (]: SQL status: SELECT 457 in 0.446 seconds
+[0m10:42:45.393862 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.fact_production"
+[0m10:42:45.396594 [debug] [Thread-2 (]: On model.valisoa_gold.fact_production: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_production"} */
+alter table "airflow"."gold"."fact_production" rename to "fact_production__dbt_backup"
+[0m10:42:45.413623 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.011 seconds
+[0m10:42:45.431775 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.fact_production"
+[0m10:42:45.434013 [debug] [Thread-2 (]: On model.valisoa_gold.fact_production: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_production"} */
+alter table "airflow"."gold"."fact_production__dbt_tmp" rename to "fact_production"
+[0m10:42:45.443995 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.006 seconds
+[0m10:42:45.452163 [debug] [Thread-2 (]: On model.valisoa_gold.fact_production: COMMIT
+[0m10:42:45.455019 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.fact_production"
+[0m10:42:45.456465 [debug] [Thread-2 (]: On model.valisoa_gold.fact_production: COMMIT
+[0m10:42:45.462759 [debug] [Thread-3 (]: SQL status: SELECT 638 in 0.526 seconds
+[0m10:42:45.479941 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.fact_rebuts"
+[0m10:42:45.483474 [debug] [Thread-3 (]: On model.valisoa_gold.fact_rebuts: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_rebuts"} */
+alter table "airflow"."gold"."fact_rebuts" rename to "fact_rebuts__dbt_backup"
+[0m10:42:45.488214 [debug] [Thread-2 (]: SQL status: COMMIT in 0.029 seconds
+[0m10:42:45.490812 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.005 seconds
+[0m10:42:45.508035 [debug] [Thread-2 (]: Applying DROP to: "airflow"."gold"."fact_production__dbt_backup"
+[0m10:42:45.529379 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.fact_rebuts"
+[0m10:42:45.532930 [debug] [Thread-2 (]: Using postgres connection "model.valisoa_gold.fact_production"
+[0m10:42:45.537036 [debug] [Thread-3 (]: On model.valisoa_gold.fact_rebuts: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_rebuts"} */
+alter table "airflow"."gold"."fact_rebuts__dbt_tmp" rename to "fact_rebuts"
+[0m10:42:45.539509 [debug] [Thread-2 (]: On model.valisoa_gold.fact_production: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_production"} */
+drop table if exists "airflow"."gold"."fact_production__dbt_backup" cascade
+[0m10:42:45.589201 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.047 seconds
+[0m10:42:45.597062 [debug] [Thread-3 (]: On model.valisoa_gold.fact_rebuts: COMMIT
+[0m10:42:45.600579 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.fact_rebuts"
+[0m10:42:45.603124 [debug] [Thread-3 (]: On model.valisoa_gold.fact_rebuts: COMMIT
+[0m10:42:45.663178 [debug] [Thread-3 (]: SQL status: COMMIT in 0.057 seconds
+[0m10:42:45.677199 [debug] [Thread-3 (]: Applying DROP to: "airflow"."gold"."fact_rebuts__dbt_backup"
+[0m10:42:45.681212 [debug] [Thread-3 (]: Using postgres connection "model.valisoa_gold.fact_rebuts"
+[0m10:42:45.684440 [debug] [Thread-3 (]: On model.valisoa_gold.fact_rebuts: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.fact_rebuts"} */
+drop table if exists "airflow"."gold"."fact_rebuts__dbt_backup" cascade
+[0m10:42:45.766498 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.224 seconds
+[0m10:42:45.772575 [debug] [Thread-2 (]: On model.valisoa_gold.fact_production: Close
+[0m10:42:45.777377 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001396791E2F0>]}
+[0m10:42:45.780731 [info ] [Thread-2 (]: 11 of 13 OK created sql incremental model gold.fact_production ................. [[32mSELECT 457[0m in 0.97s]
+[0m10:42:45.787088 [debug] [Thread-2 (]: Finished running node model.valisoa_gold.fact_production
+[0m10:42:45.789840 [debug] [Thread-1 (]: Began running node model.valisoa_gold.production_features
+[0m10:42:45.793110 [info ] [Thread-1 (]: 13 of 13 START sql table model gold_ml.production_features ..................... [RUN]
+[0m10:42:45.796072 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.valisoa_gold.int_production_cadence, now model.valisoa_gold.production_features)
+[0m10:42:45.797825 [debug] [Thread-1 (]: Began compiling node model.valisoa_gold.production_features
+[0m10:42:45.816838 [debug] [Thread-1 (]: Writing injected SQL for node "model.valisoa_gold.production_features"
+[0m10:42:45.850512 [debug] [Thread-1 (]: Began executing node model.valisoa_gold.production_features
+[0m10:42:45.871201 [debug] [Thread-3 (]: SQL status: DROP TABLE in 0.184 seconds
+[0m10:42:45.874760 [debug] [Thread-1 (]: Writing runtime sql for node "model.valisoa_gold.production_features"
+[0m10:42:45.883584 [debug] [Thread-3 (]: On model.valisoa_gold.fact_rebuts: Close
+[0m10:42:45.889560 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000139681E58D0>]}
+[0m10:42:45.892696 [info ] [Thread-3 (]: 12 of 13 OK created sql incremental model gold.fact_rebuts ..................... [[32mSELECT 638[0m in 1.08s]
+[0m10:42:45.897016 [debug] [Thread-3 (]: Finished running node model.valisoa_gold.fact_rebuts
+[0m10:42:45.899903 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.production_features"
+[0m10:42:45.902824 [debug] [Thread-1 (]: On model.valisoa_gold.production_features: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.production_features"} */
+
+  
+    
+
+  create  table "airflow"."gold_ml"."production_features__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Une ligne par OF, toutes les features à plat : contexte machine/produit,
+-- indicateurs TRS, cumul des arrêts et rebuts associés à cet OF.
+-- Pas de FK ici volontairement : consommé tel quel par des pipelines
+-- ML (pandas/scikit-learn/notebooks), donc on dénormalise tout.
+
+with arrets_agg as (
+    select
+        code_of,
+        count(*)          as nb_arrets,
+        sum(duree_min)     as duree_arrets_totale_min,
+        sum(case when duree_min > 60 then 1 else 0 end) as nb_arrets_longs
+    from "airflow"."gold_staging"."stg_arrets"
+    group by code_of
+),
+
+rebuts_agg as (
+    select
+        code_of,
+        count(*)      as nb_lignes_rebut,
+        sum(quantite)  as qte_rebut_declaree
+    from "airflow"."gold_staging"."stg_rebuts"
+    group by code_of
+)
+
+select
+    fp.production_key,
+    fp.code_of,
+    dm.machine,
+    dm.atelier,
+    dp.libelle          as produit,
+    fp.date_debut,
+    fp.date_fin,
+    extract(epoch from (fp.date_fin - fp.date_debut)) / 60.0  as duree_of_min,
+    fp.qte_prevue,
+    fp.qte_produite,
+    fp.qte_rebut,
+    fp.trs_pct,
+    fp.disponibilite_pct,
+    fp.performance_pct,
+    fp.qualite_pct,
+    coalesce(aa.nb_arrets, 0)                as nb_arrets,
+    coalesce(aa.duree_arrets_totale_min, 0)  as duree_arrets_totale_min,
+    coalesce(aa.nb_arrets_longs, 0)          as nb_arrets_longs,
+    coalesce(ra.nb_lignes_rebut, 0)          as nb_lignes_rebut,
+    coalesce(ra.qte_rebut_declaree, 0)       as qte_rebut_declaree,
+    -- cible potentielle pour un modèle de classification/régression :
+    case when fp.qte_produite > 0
+         then round(fp.qte_rebut::numeric / fp.qte_produite * 100, 2)
+         else null
+    end as taux_rebut_pct
+from "airflow"."gold"."fact_production" fp
+left join "airflow"."gold"."dim_machine" dm  on dm.machine_key = fp.machine_key
+left join "airflow"."gold"."dim_produit" dp  on dp.produit_key = fp.produit_key
+left join arrets_agg aa               on aa.code_of = fp.code_of
+left join rebuts_agg ra               on ra.code_of = fp.code_of
+  );
+  
+[0m10:42:45.905157 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m10:42:46.134602 [debug] [Thread-1 (]: SQL status: SELECT 457 in 0.230 seconds
+[0m10:42:46.144046 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.production_features"
+[0m10:42:46.146233 [debug] [Thread-1 (]: On model.valisoa_gold.production_features: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.production_features"} */
+alter table "airflow"."gold_ml"."production_features" rename to "production_features__dbt_backup"
+[0m10:42:46.151865 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m10:42:46.161551 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.production_features"
+[0m10:42:46.163129 [debug] [Thread-1 (]: On model.valisoa_gold.production_features: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.production_features"} */
+alter table "airflow"."gold_ml"."production_features__dbt_tmp" rename to "production_features"
+[0m10:42:46.175305 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.005 seconds
+[0m10:42:46.179332 [debug] [Thread-1 (]: On model.valisoa_gold.production_features: COMMIT
+[0m10:42:46.181031 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.production_features"
+[0m10:42:46.183082 [debug] [Thread-1 (]: On model.valisoa_gold.production_features: COMMIT
+[0m10:42:46.192546 [debug] [Thread-1 (]: SQL status: COMMIT in 0.007 seconds
+[0m10:42:46.204838 [debug] [Thread-1 (]: Applying DROP to: "airflow"."gold_ml"."production_features__dbt_backup"
+[0m10:42:46.207711 [debug] [Thread-1 (]: Using postgres connection "model.valisoa_gold.production_features"
+[0m10:42:46.210707 [debug] [Thread-1 (]: On model.valisoa_gold.production_features: /* {"app": "dbt", "dbt_version": "1.10.7", "profile_name": "valisoa_gold", "target_name": "dev", "node_id": "model.valisoa_gold.production_features"} */
+drop table if exists "airflow"."gold_ml"."production_features__dbt_backup" cascade
+[0m10:42:46.245322 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.033 seconds
+[0m10:42:46.250044 [debug] [Thread-1 (]: On model.valisoa_gold.production_features: Close
+[0m10:42:46.253823 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '21b7a502-c2c9-4881-91d1-67353ff3e316', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000139681E48E0>]}
+[0m10:42:46.256973 [info ] [Thread-1 (]: 13 of 13 OK created sql table model gold_ml.production_features ................ [[32mSELECT 457[0m in 0.46s]
+[0m10:42:46.260268 [debug] [Thread-1 (]: Finished running node model.valisoa_gold.production_features
+[0m10:42:46.266966 [debug] [MainThread]: On master: COMMIT
+[0m10:42:46.268994 [debug] [MainThread]: Using postgres connection "master"
+[0m10:42:46.270994 [debug] [MainThread]: On master: COMMIT
+[0m10:42:46.274523 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m10:42:46.381832 [debug] [MainThread]: SQL status: COMMIT in 0.107 seconds
+[0m10:42:46.382989 [debug] [MainThread]: On master: Close
+[0m10:42:46.384773 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m10:42:46.387215 [debug] [MainThread]: Connection 'list_airflow' was properly closed.
+[0m10:42:46.389624 [debug] [MainThread]: Connection 'list_airflow' was properly closed.
+[0m10:42:46.391152 [debug] [MainThread]: Connection 'list_airflow' was properly closed.
+[0m10:42:46.392987 [debug] [MainThread]: Connection 'list_airflow' was properly closed.
+[0m10:42:46.395003 [debug] [MainThread]: Connection 'list_airflow_gold_ml' was properly closed.
+[0m10:42:46.395003 [debug] [MainThread]: Connection 'list_airflow_gold_intermediate' was properly closed.
+[0m10:42:46.397530 [debug] [MainThread]: Connection 'list_airflow_gold_staging' was properly closed.
+[0m10:42:46.398265 [debug] [MainThread]: Connection 'list_airflow_gold' was properly closed.
+[0m10:42:46.400152 [debug] [MainThread]: Connection 'model.valisoa_gold.production_features' was properly closed.
+[0m10:42:46.401232 [debug] [MainThread]: Connection 'model.valisoa_gold.fact_production' was properly closed.
+[0m10:42:46.401534 [debug] [MainThread]: Connection 'model.valisoa_gold.fact_rebuts' was properly closed.
+[0m10:42:46.402560 [debug] [MainThread]: Connection 'model.valisoa_gold.fact_arrets' was properly closed.
+[0m10:42:46.403730 [info ] [MainThread]: 
+[0m10:42:46.406061 [info ] [MainThread]: Finished running 3 incremental models, 5 table models, 5 view models in 0 hours 0 minutes and 4.13 seconds (4.13s).
+[0m10:42:46.413819 [debug] [MainThread]: Command end result
+[0m10:42:46.518862 [debug] [MainThread]: Wrote artifact WritableManifest to Y:\PROJET VALISOA 2026\data_pipeline\airflow\dags\dbt\valisoa_gold\target\manifest.json
+[0m10:42:46.525989 [debug] [MainThread]: Wrote artifact SemanticManifest to Y:\PROJET VALISOA 2026\data_pipeline\airflow\dags\dbt\valisoa_gold\target\semantic_manifest.json
+[0m10:42:46.548363 [debug] [MainThread]: Wrote artifact RunExecutionResult to Y:\PROJET VALISOA 2026\data_pipeline\airflow\dags\dbt\valisoa_gold\target\run_results.json
+[0m10:42:46.549387 [info ] [MainThread]: 
+[0m10:42:46.551973 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m10:42:46.553077 [info ] [MainThread]: 
+[0m10:42:46.554312 [info ] [MainThread]: Done. PASS=13 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=13
+[0m10:42:46.556832 [debug] [MainThread]: Command `dbt run` succeeded at 10:42:46.556832 after 10.36 seconds
+[0m10:42:46.558847 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013963F874C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000139652A2260>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001396794C4F0>]}
+[0m10:42:46.559848 [debug] [MainThread]: Flushing usage events
+[0m10:42:48.183310 [debug] [MainThread]: An error was encountered while trying to flush usage events

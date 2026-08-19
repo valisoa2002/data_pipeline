@@ -4,5 +4,6 @@ select
     trim(motif)                  as motif,
     trim(composant_cible)        as composant_cible,
     quantite,
-    validated_at                 as date_saisie
+    date_saisie                  as date_saisie,   -- ✅ la vraie colonne Excel
+    validated_at                 as date_validation  -- garder l'ancienne, renommée, utile pour l'audit/traçabilité
 from "airflow"."validated"."raw_excel_rebuts"

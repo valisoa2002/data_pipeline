@@ -318,3 +318,18 @@ export DBT_PG_PASSWORD=airflow
 export DBT_PG_PORT=5434
 export DBT_PG_DBNAME=airflow
 export DBT_PROFILES_DIR=$(pwd)
+
+
+## Installer et activer pgvector dans le container postgres existant
+```bash
+docker exec -it data_pipeline-postgres-1 bash -c "apt-get update && apt-get install -y postgresql-15-pgvector"
+```
+Puis activez l'extension dans la base
+
+```bash
+docker exec -it data_pipeline-postgres-1 psql -U airflow -d airflow -c "CREATE EXTENSION IF NOT EXISTS vector;"
+```
+
+```bash
+docker exec -it data_pipeline-postgres-1 psql -U airflow -d airflow -c "\dx"
+```

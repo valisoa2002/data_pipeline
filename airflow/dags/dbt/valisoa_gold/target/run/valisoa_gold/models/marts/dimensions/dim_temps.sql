@@ -9,8 +9,16 @@
   
   (
     -- Calendrier généré dynamiquement entre la date min et max observées
--- dans les faits (réalisations + arrêts), avec une marge de 30 jours
+-- dans les faits (réalisations + arrêts), avec une marge de 7 jours
 -- de part et d'autre pour anticiper les prochains chargements.
+--
+-- NOTE : marge réduite de 30 à 7 jours (2026-07-...) — une marge trop
+-- large créait un écart important entre MAX(dim_temps.date) et la
+-- dernière date réelle avec données, piégeant les mesures DAX qui se
+-- basent sur MAX(dim_temps[date]) pour calculer des fenêtres glissantes
+-- (ex: sparklines des N derniers jours). Les mesures DAX doivent malgré
+-- tout rester défensives (filtrer sur NOT ISBLANK(...)) plutôt que de
+-- dépendre uniquement de cette marge réduite.
 
 with bounds as (
     select
@@ -26,8 +34,8 @@ with bounds as (
 spine as (
     select
         generate_series(
-            (select date_trunc('day', min_date) - interval '30 day' from bounds),
-            (select date_trunc('day', max_date) + interval '30 day' from bounds),
+            (select date_trunc('day', min_date) - interval '7 day' from bounds),
+            (select date_trunc('day', max_date) + interval '7 day' from bounds),
             interval '1 day'
         )::date as date_jour
 )
